@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: ./johome-api
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - 1337:1337
+    environment:
+      - HOST=0.0.0.0
+      - PORT=1337
+      - APP_KEYS=RHd34RsXrf8FbsAw2tAJzQ==,nH6hQq6Gq4kcI8rP4CtRaQ==,r71vT/30e0NdIUbsuoVnSA==,FSnyTHMnANwvTIdB8ggVIQ==
+      - API_TOKEN_SALT=Xn18rLgDs7YzRIJtenjBOA==
+      - ADMIN_JWT_SECRET=+EK7ntdITlU4JJZLq0R+YQ==
+      - JWT_SECRET=7Ivbynvl2fmxcgP+spjTPA==
+    volumes:
+      - ./johome-api/config:/opt/app/config
+      - ./johome-api/src:/opt/app/src
+      - ./johome-api/package.json:/opt/package.json
+      - ./johome-api/.env:/opt/app/.env
+  web:
+    build:
+      context: ./johome-web
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      - NEXT_PUBLIC_ROOT_API_GRAPHQL=http://localhost:1337
+      - NEXTAUTH_API_SERVER=http://api:1337
+      - NEXTAUTH_SECRET=nextAuthSecret
+      - NEXTAUTH_URL=web:3000
+    depends_on:
+      - api
+    volumes:
+      - ./johome-web:/app

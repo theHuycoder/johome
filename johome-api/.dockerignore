@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+.cache/
+Dockerfile
+Dockerfile.dev
+Dockerfile.prod
+.env
+.env.example
+README.md
+.editorconfig
