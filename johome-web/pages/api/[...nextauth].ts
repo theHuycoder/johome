@@ -14,6 +14,8 @@ const login = (email: string, password: string) =>
   }),
  });
 
+console.log(process.env.NEXTAUTH_API_SERVER);
+
 const credentialsAuthorize = async (
  credentials: Record<"email" | "password", string> | undefined
 ) => {
@@ -21,6 +23,8 @@ const credentialsAuthorize = async (
 
  try {
   const resp = await login(credentials.email, credentials.password);
+
+  console.log(resp);
 
   if (resp) {
    const data = await resp.json();
