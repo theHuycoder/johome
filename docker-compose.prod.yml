@@ -14,11 +14,6 @@ services:
       - API_TOKEN_SALT=Xn18rLgDs7YzRIJtenjBOA==
       - ADMIN_JWT_SECRET=+EK7ntdITlU4JJZLq0R+YQ==
       - JWT_SECRET=7Ivbynvl2fmxcgP+spjTPA==
-    volumes:
-      - ./johome-api/config:/opt/app/config
-      - ./johome-api/src:/opt/app/src
-      - ./johome-api/package.json:/opt/package.json
-      - ./johome-api/.env:/opt/app/.env
   web:
     build:
       context: ./johome-web
@@ -33,8 +28,6 @@ services:
       - NEXTAUTH_URL=web:3000
     depends_on:
       - api
-    volumes:
-      - ./johome-web:/app
   webserver:
     build:
       context: ./nginx
