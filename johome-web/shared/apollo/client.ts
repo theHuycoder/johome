@@ -16,6 +16,8 @@ const httpLink = createHttpLink({
  credentials: "include",
 });
 
+console.log("env", process.env.NEXT_PUBLIC_ROOT_API_GRAPHQL);
+
 const errorLink = onError(({ graphQLErrors, networkError }) => {
  if (graphQLErrors) {
   for (const error of graphQLErrors) {
