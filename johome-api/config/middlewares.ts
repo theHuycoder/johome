@@ -6,16 +6,8 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "connect-src": ["'self'", "https:"],
-          "img-src": [
-            "'self'",
-            "data:",
-            "blob:",
-            "res.cloudinary.com", // cloudinary images
-            "lh3.googleusercontent.com", // google avatars
-            "platform-lookaside.fbsbx.com", // facebook avatars
-            "dl.airtable.com", // strapi marketplace
-          ],
+          "connect-src": ["'self'", "https:", "https://*.johome.site"],
+          "img-src": ["'self'", "data:", "blob:"],
           "media-src": ["'self'", "data:", "blob:"],
           upgradeInsecureRequests: null,
         },
