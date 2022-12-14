@@ -30,6 +30,8 @@ services:
       - ./johome-web/docker.env
     depends_on:
       - api
+    volumes:
+      - web
   certbot:
     image: certbot/certbot:latest
     volumes:
@@ -51,3 +53,5 @@ services:
       - web
       - api
       - certbot
+volumes:
+  web:
