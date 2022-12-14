@@ -6,7 +6,7 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "connect-src": ["'self'", "https:", "https://*.johome.site"],
+          "connect-src": ["'self'", "https:", "https://*.johome.site/strapi/"],
           "img-src": ["'self'", "data:", "blob:"],
           "media-src": ["'self'", "data:", "blob:"],
           upgradeInsecureRequests: null,
