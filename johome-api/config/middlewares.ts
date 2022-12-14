@@ -2,19 +2,7 @@ export default [
   "strapi::errors",
   "strapi::security",
   "strapi::poweredBy",
-  {
-    name: "strapi::cors",
-    config: {
-      enabled: true,
-      headers: "*",
-      origin: [
-        "http://localhost:1337",
-        "https://johome.site",
-        "https://www.johome.site",
-        "https://johome.site/strapi",
-      ],
-    },
-  },
+  "strapi::cors",
   "strapi::logger",
   "strapi::query",
   "strapi::body",
