@@ -22,8 +22,6 @@ const credentialsAuthorize = async (
  try {
   const resp = await login(credentials.email, credentials.password);
 
-  console.log(resp);
-
   if (resp) {
    const data = await resp.json();
    return data;
@@ -31,7 +29,6 @@ const credentialsAuthorize = async (
 
   return null;
  } catch (error) {
-  console.warn(error);
   console.log(error);
   throw error;
  }
