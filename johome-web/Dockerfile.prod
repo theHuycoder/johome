@@ -21,10 +21,7 @@ RUN apk add --no-cache git curl \
 
 # Build production
 FROM node:16-alpine AS PRODUCTION
-ENV NEXT_PUBLIC_ROOT_API_GRAPHQL=https://johome.site/strapi/graphql
-ENV NEXTAUTH_API_SERVER=http://api:1337
-ENV NEXTAUTH_SECRET=nextAuthSecret
-ENV NEXTAUTH_URL=http://johome.site
+
 
 WORKDIR /app
 

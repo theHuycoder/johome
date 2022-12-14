@@ -26,6 +26,8 @@ services:
     #   - NEXTAUTH_API_SERVER=http://api:1337
     #   - NEXTAUTH_SECRET=nextAuthSecret
     #   - NEXTAUTH_URL=http://johome.site
+    env_file:
+      - ./johome-web/docker.env
     depends_on:
       - api
   certbot:
