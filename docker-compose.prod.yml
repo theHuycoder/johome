@@ -26,7 +26,7 @@ services:
     #   - NEXTAUTH_API_SERVER=http://api:1337
     #   - NEXTAUTH_SECRET=nextAuthSecret
     #   - NEXTAUTH_URL=http://johome.site
-    # depends_on:
+    depends_on:
       - api
   certbot:
     image: certbot/certbot:latest
