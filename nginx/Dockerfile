@@ -1,5 +1,5 @@
-FROM nginx
-# FROM nginx:alpine
+# FROM nginx
+FROM nginx:alpine
 COPY ./conf.d /etc/nginx/conf.d
 # COPY ./script/run.sh /run.sh
 EXPOSE 80 443 8090

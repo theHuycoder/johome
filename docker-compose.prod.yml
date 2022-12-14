@@ -23,9 +23,9 @@ services:
       - 3000:3000
     environment:
       - NEXT_PUBLIC_ROOT_API_GRAPHQL=/strapi/graphql
-      - NEXTAUTH_API_SERVER=http://johome.site/strapi
+      - NEXTAUTH_API_SERVER=http://api:1337
       - NEXTAUTH_SECRET=nextAuthSecret
-      - NEXTAUTH_URL=web
+      - NEXTAUTH_URL=http://johome.site
     depends_on:
       - api
   webserver:
