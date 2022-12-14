@@ -8,7 +8,7 @@ services:
     ports:
       - 1337:1337
     environment:
-      - HOST=api
+      - HOST=http://api/
       - PORT=1337
       - APP_KEYS=RHd34RsXrf8FbsAw2tAJzQ==,nH6hQq6Gq4kcI8rP4CtRaQ==,r71vT/30e0NdIUbsuoVnSA==,FSnyTHMnANwvTIdB8ggVIQ==
       - API_TOKEN_SALT=Xn18rLgDs7YzRIJtenjBOA==
