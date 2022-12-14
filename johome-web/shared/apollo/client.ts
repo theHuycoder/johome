@@ -14,10 +14,7 @@ import Router from "next/router";
 const httpLink = createHttpLink({
  uri: process.env.NEXT_PUBLIC_ROOT_API_GRAPHQL,
  credentials: "include",
- 
 });
-
-
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
  if (graphQLErrors) {
@@ -33,7 +30,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 const authLink = setContext(async (_, { headers }) => {
  const session = await getSession();
 
- console.log(session)
+ console.log(session);
 
  return {
   headers: {

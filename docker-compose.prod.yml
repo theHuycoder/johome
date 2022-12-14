@@ -22,7 +22,7 @@ services:
     ports:
       - 3000:3000
     environment:
-      - NEXT_PUBLIC_ROOT_API_GRAPHQL=/strapi/graphql
+      - NEXT_PUBLIC_ROOT_API_GRAPHQL=https://johome.site/strapi/graphql
       - NEXTAUTH_API_SERVER=http://api:1337
       - NEXTAUTH_SECRET=nextAuthSecret
       - NEXTAUTH_URL=http://johome.site
