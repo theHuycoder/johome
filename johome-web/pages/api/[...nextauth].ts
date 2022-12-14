@@ -34,6 +34,7 @@ const credentialsAuthorize = async (
   return null;
  } catch (error) {
   console.warn(error);
+  console.log(error);
   throw error;
  }
 };

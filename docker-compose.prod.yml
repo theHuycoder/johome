@@ -23,7 +23,7 @@ services:
       - 3000:3000
     environment:
       - NEXT_PUBLIC_ROOT_API_GRAPHQL=/strapi/graphql
-      - NEXTAUTH_API_SERVER=/strapi
+      - NEXTAUTH_API_SERVER=http://api:1337
       - NEXTAUTH_SECRET=nextAuthSecret
       - NEXTAUTH_URL=web
     depends_on:
