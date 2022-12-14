@@ -1,19 +1,6 @@
 export default [
   "strapi::errors",
-  {
-    name: "strapi::security",
-    config: {
-      contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-          "connect-src": ["'self'", "https:", "https://*.johome.site/strapi/"],
-          "img-src": ["'self'", "data:", "blob:"],
-          "media-src": ["'self'", "data:", "blob:"],
-          upgradeInsecureRequests: null,
-        },
-      },
-    },
-  },
+  "strapi::security",
   "strapi::poweredBy",
   {
     name: "strapi::cors",
