@@ -22,7 +22,7 @@ export default function IntroLanding() {
     display="flex"
     alignItems="flex-start"
     justifyContent="center"
-    paddingTop={35}
+    paddingTop={33}
    >
     <Box
      display="flex"

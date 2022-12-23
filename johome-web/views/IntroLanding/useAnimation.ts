@@ -81,7 +81,7 @@ export default function useAnimation() {
     ".sun",
     {
      duration: 4,
-     xPercent: 160,
+     xPercent: 220,
      yPercent: 160,
      scale: 1.2,
     },
@@ -111,8 +111,9 @@ export default function useAnimation() {
     ".cloud",
     {
      duration: 4,
-     yPercent: 80,
+     yPercent: 100,
      xPercent: 0,
+     scale: 1.1,
     },
     0
    )
