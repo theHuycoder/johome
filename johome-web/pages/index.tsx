@@ -4,6 +4,10 @@ import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import { useLazyQuery, gql } from "@apollo/client";
+import { PriceCard } from "@/shared/components";
+import { Card } from "@mui/material";
+import { IntroLanding } from "@/views";
+import { Navbar } from "@/shared/layouts";
 
 export default function Home() {
  const router = useRouter();
@@ -30,23 +34,8 @@ export default function Home() {
  };
 
  return (
-  <form onSubmit={onSubmit}>
-		{/* Hello */}
-   <input id="email" name="email" type="text" />
-   <input id="password" name="password" type="password" />
-   <button>Sign In</button>
-   <button
-    type="button"
-    onClick={() =>
-     getMe({
-      onCompleted: (data) => {
-       console.log(data);
-      },
-     })
-    }
-   >
-    get me
-   </button>
-  </form>
+  <>
+   <IntroLanding />
+  </>
  );
 }

@@ -1,20 +1,10 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-
-/* Importing the font Mulish from the font source. */
-import "@fontsource/mulish/200.css";
-import "@fontsource/mulish/300.css";
-import "@fontsource/mulish/400.css";
-import "@fontsource/mulish/500.css";
-import "@fontsource/mulish/600.css";
-import "@fontsource/mulish/700.css";
-import "@fontsource/mulish/800.css";
-
 /* Importing the ApolloProvider and the client from the apollo folder. */
 import { ApolloProvider } from "@apollo/client";
 import { client } from "@/shared/apollo";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "@/shared/context";
 
 export default function App({
  Component,
@@ -37,7 +27,9 @@ export default function App({
    `}</style>
    <SessionProvider session={session}>
     <ApolloProvider client={client}>
-     <Component {...pageProps} />
+     <ThemeProvider>
+      <Component {...pageProps} />
+     </ThemeProvider>
     </ApolloProvider>
    </SessionProvider>
   </>
