@@ -14,6 +14,10 @@ services:
       - API_TOKEN_SALT=Xn18rLgDs7YzRIJtenjBOA==
       - ADMIN_JWT_SECRET=+EK7ntdITlU4JJZLq0R+YQ==
       - JWT_SECRET=7Ivbynvl2fmxcgP+spjTPA==
+      - URL=
+      - CLOUDINARY_NAME=dyotzt92h
+      - CLOUDINARY_API_KEY=875263122291697
+      - CLOUDINARY_API_SECRET=2iu-Vvr4h5lnM_bjBL3Hco7nu9w
     volumes:
       - ./johome-api/config:/opt/app/config
       - ./johome-api/src:/opt/app/src
@@ -27,10 +31,13 @@ services:
     ports:
       - 3000:3000
     environment:
-      - NEXT_PUBLIC_ROOT_API_GRAPHQL=http://localhost:1337
+      - NEXT_PUBLIC_ROOT_API_GRAPHQL=http://localhost:1337/graphql
       - NEXTAUTH_API_SERVER=http://api:1337
       - NEXTAUTH_SECRET=nextAuthSecret
       - NEXTAUTH_URL=web:3000
+      - CLOUDINARY_NAME=dyotzt92h
+      - CLOUDINARY_API_KEY=875263122291697
+      - CLOUDINARY_API_SECRET=2iu-Vvr4h5lnM_bjBL3Hco7nu9w
     depends_on:
       - api
     volumes:

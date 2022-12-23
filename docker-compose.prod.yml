@@ -14,6 +14,10 @@ services:
       - API_TOKEN_SALT=Xn18rLgDs7YzRIJtenjBOA==
       - ADMIN_JWT_SECRET=+EK7ntdITlU4JJZLq0R+YQ==
       - JWT_SECRET=7Ivbynvl2fmxcgP+spjTPA==
+      - URL=https://johome.site/strapi/
+      - CLOUDINARY_NAME=dyotzt92h
+      - CLOUDINARY_API_KEY=875263122291697
+      - CLOUDINARY_API_SECRET=2iu-Vvr4h5lnM_bjBL3Hco7nu9w
   web:
     build:
       context: ./johome-web
@@ -21,11 +25,10 @@ services:
     restart: always
     ports:
       - 3000:3000
-    # environment:
-    #   - NEXT_PUBLIC_ROOT_API_GRAPHQL=https://johome.site/strapi/graphql
-    #   - NEXTAUTH_API_SERVER=http://api:1337
-    #   - NEXTAUTH_SECRET=nextAuthSecret
-    #   - NEXTAUTH_URL=http://johome.site
+    environment:
+      - CLOUDINARY_NAME=dyotzt92h
+      - CLOUDINARY_API_KEY=875263122291697
+      - CLOUDINARY_API_SECRET=2iu-Vvr4h5lnM_bjBL3Hco7nu9w
     depends_on:
       - api
     volumes:

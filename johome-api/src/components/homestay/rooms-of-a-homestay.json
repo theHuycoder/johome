@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_homestay_rooms_of_a_homestays",
+  "info": {
+    "displayName": "Homestay room",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "room_name": {
+      "type": "string"
+    },
+    "room_images": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

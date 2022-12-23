@@ -71,6 +71,11 @@
     },
     "mobile": {
       "type": "string"
+    },
+    "addresses": {
+      "type": "component",
+      "repeatable": true,
+      "component": "user.user-address"
     }
   }
 }

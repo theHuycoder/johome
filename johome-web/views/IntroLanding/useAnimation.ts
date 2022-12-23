@@ -112,7 +112,7 @@ export default function useAnimation() {
     {
      duration: 4,
      yPercent: 80,
-     xPercent: -10,
+     xPercent: 0,
     },
     0
    )
@@ -155,17 +155,24 @@ export default function useAnimation() {
     },
     3
    )
-   .to(titleRef.current, {
-    translateY: 0,
-    duration: 2,
-    opacity: 1,
-   },4)
-	 .to(ctaRef.current, {
-    translateY: 0,
-    duration: 2,
-    opacity: 1,
-   },5);
-	 
+   .to(
+    titleRef.current,
+    {
+     translateY: 0,
+     duration: 2,
+     opacity: 1,
+    },
+    4
+   )
+   .to(
+    ctaRef.current,
+    {
+     translateY: 0,
+     duration: 2,
+     opacity: 1,
+    },
+    5
+   );
  }, []);
 
  return { navbarRef, titleRef, ctaRef };

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_user_user_addresses",
+  "info": {
+    "displayName": "User Address",
+    "icon": "address-card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "house_number": {
+      "type": "string"
+    },
+    "street": {
+      "type": "text"
+    },
+    "city": {
+      "type": "string"
+    },
+    "district": {
+      "type": "string"
+    },
+    "postcode": {
+      "type": "integer"
+    },
+    "country": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "homestays",
+  "info": {
+    "singularName": "homestay",
+    "pluralName": "homestays",
+    "displayName": "Homestay",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "rooms": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homestay.rooms-of-a-homestay"
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
