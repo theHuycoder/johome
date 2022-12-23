@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 export default function useAnimation() {
@@ -6,7 +6,7 @@ export default function useAnimation() {
  const titleRef = useRef(null);
  const ctaRef = useRef(null);
 
- useEffect(() => {
+ useLayoutEffect(() => {
   const bgTimeline = gsap.timeline();
 
   gsap.set(".birds", {
