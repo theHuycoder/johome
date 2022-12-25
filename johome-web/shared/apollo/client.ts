@@ -16,8 +16,6 @@ const httpLink = createHttpLink({
  credentials: "include",
 });
 
-console.log("env", process.env.NEXT_PUBLIC_ROOT_API_GRAPHQL);
-
 const errorLink = onError(({ graphQLErrors, networkError }) => {
  if (graphQLErrors) {
   for (const error of graphQLErrors) {
@@ -31,8 +29,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const authLink = setContext(async (_, { headers }) => {
  const session = await getSession();
-
- console.log(session);
 
  return {
   headers: {

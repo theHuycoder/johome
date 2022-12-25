@@ -14,7 +14,7 @@ export default function GoodValues() {
      Velit officia consequat duis enim velit mollit.
     </SectionSubtitle>
    </Grid>
-   <Grid xs={12} md={8}>
+   <Grid item xs={12} md={8}>
     <Box
      display="flex"
      alignItems="flex-start"

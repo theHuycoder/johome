@@ -13,9 +13,7 @@ const nextConfig = {
   domains: ["res.cloudinary.com"],
  },
  compiler: {
-  styledComponents: {
-   ssr: true,
-  },
+  styledComponents: true,
  },
 };
 

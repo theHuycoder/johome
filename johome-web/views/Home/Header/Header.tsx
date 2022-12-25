@@ -39,7 +39,7 @@ export default function Header() {
      </Grid>
      <Grid item lg={5}>
       <Box height="100%">
-       <Box position="relative" height="100%">
+       <Box position="relative" height="inherit">
         <Image
          src="/assets/home/header-1.jpg"
          alt="header-1"

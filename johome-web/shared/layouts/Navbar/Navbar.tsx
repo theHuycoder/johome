@@ -48,12 +48,17 @@ const links = [
 type LogoVariant = "monochrome" | "colorful";
 
 export default forwardRef<
- { [key: string]: any; logoVariant: LogoVariant },
+ { [key: string]: any; logoVariant: LogoVariant; shouldToggle?: boolean },
  any
->(function Navbar({ logoVariant = "monochrome", ...props }, ref) {
+>(function Navbar(
+ { logoVariant = "monochrome", shouldToggle = true, ...props },
+ ref
+) {
  const [isScrolled, setIsScrolled] = useState(false);
 
  useEffect(() => {
+  if (!shouldToggle) return;
+
   const onScroll = () => {
    setIsScrolled(window.scrollY > 0);
   };
@@ -63,10 +68,10 @@ export default forwardRef<
   return () => {
    window.removeEventListener("scroll", onScroll);
   };
- }, []);
+ }, [shouldToggle]);
 
  return (
-  <StyledNavbar isScrolled={isScrolled} {...props} ref={ref}>
+  <StyledNavbar isScrolled={shouldToggle && isScrolled} {...props} ref={ref}>
    <Container maxWidth="xl">
     <Box display="flex" alignItems="center" justifyContent="space-between">
      <Box flexBasis="15%">

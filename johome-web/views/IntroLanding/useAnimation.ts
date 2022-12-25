@@ -1,31 +1,29 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect } from "react";
 import gsap from "gsap";
 
 export default function useAnimation() {
- const navbarRef = useRef(null);
- const titleRef = useRef(null);
- const ctaRef = useRef(null);
-
  useLayoutEffect(() => {
-  const bgTimeline = gsap.timeline();
-
   gsap.set(".birds", {
    transformOrigin: "bottom right",
   });
 
-  gsap.set(navbarRef.current, {
+  gsap.set("#navbar", {
    translateY: -100,
   });
 
-  gsap.set(titleRef.current, {
+  gsap.set("#title", {
    translateY: 100,
    opacity: 0,
   });
 
-  gsap.set(ctaRef.current, {
+  gsap.set("#cta", {
    translateY: 100,
    opacity: 0,
   });
+ }, []);
+
+ useLayoutEffect(() => {
+  const bgTimeline = gsap.timeline();
 
   function changeBgColor() {
    const tl = gsap.timeline({
@@ -149,7 +147,7 @@ export default function useAnimation() {
     0
    )
    .to(
-    navbarRef.current,
+    "#navbar",
     {
      translateY: 0,
      duration: 2,
@@ -157,7 +155,7 @@ export default function useAnimation() {
     3
    )
    .to(
-    titleRef.current,
+    "#title",
     {
      translateY: 0,
      duration: 2,
@@ -166,7 +164,7 @@ export default function useAnimation() {
     4
    )
    .to(
-    ctaRef.current,
+    "#cta",
     {
      translateY: 0,
      duration: 2,
@@ -175,6 +173,4 @@ export default function useAnimation() {
     5
    );
  }, []);
-
- return { navbarRef, titleRef, ctaRef };
 }

@@ -1,18 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import IntroBG from "./IntroBG";
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { Navbar } from "@/shared/layouts";
 import useAnimation from "./useAnimation";
 import { Button } from "@/shared/components";
 import { useRouter } from "next/router";
 
 export default function IntroLanding() {
- const { navbarRef, titleRef, ctaRef } = useAnimation();
+ useAnimation();
  const router = useRouter();
 
  return (
   <Box>
-   <Navbar ref={navbarRef} />
+   <Navbar id="navbar" style={{ opacity: 0 }} />
    <IntroBG />
    <Box
     zIndex="200"
@@ -34,21 +34,23 @@ export default function IntroLanding() {
      gap={7}
     >
      <Typography
-      ref={titleRef}
       variant="h3"
       component="h1"
       textAlign="center"
       fontWeight={800}
+      id="title"
+      sx={{ opacity: 0 }}
      >
       Tìm điểm dừng chân cho chuyến đi của bạn <br />
       ngay bây giờ
      </Typography>
      <Button
-      ref={ctaRef}
       variant="contained"
       color="common.white"
       hoverColor="grey.200"
       onClick={() => router.push("/home")}
+      id="cta"
+      sx={{ opacity: 0 }}
      >
       Đặt chỗ ngay
      </Button>
