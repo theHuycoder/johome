@@ -32,6 +32,7 @@ services:
       - 3000:3000
     environment:
       - NEXT_PUBLIC_ROOT_API_GRAPHQL=http://localhost:1337/graphql
+      - NEXT_PUBLIC_GOOGLE_API_KEY=AIzaSyATffFqKZRmWuuDH3u-ulLuNllZczc8Mqk
       - NEXTAUTH_API_SERVER=http://api:1337
       - NEXTAUTH_SECRET=nextAuthSecret
       - NEXTAUTH_URL=web:3000
