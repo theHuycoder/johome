@@ -1,10 +1,16 @@
-import React, { Suspense } from "react";
+import React from "react";
 import IntroBG from "./IntroBG";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Navbar } from "@/shared/layouts";
 import useAnimation from "./useAnimation";
 import { Button } from "@/shared/components";
 import { useRouter } from "next/router";
+
+import styled from "styled-components";
+
+const StyledNavbar = styled(Navbar)`
+ opacity: 0;
+`;
 
 export default function IntroLanding() {
  useAnimation();
@@ -12,7 +18,7 @@ export default function IntroLanding() {
 
  return (
   <Box>
-   <Navbar id="navbar" style={{ opacity: 0 }} />
+   <StyledNavbar id="navbar" />
    <IntroBG />
    <Box
     zIndex="200"

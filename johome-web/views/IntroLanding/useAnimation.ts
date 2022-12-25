@@ -9,6 +9,7 @@ export default function useAnimation() {
 
   gsap.set("#navbar", {
    translateY: -100,
+   opacity: 0,
   });
 
   gsap.set("#title", {
@@ -119,7 +120,6 @@ export default function useAnimation() {
     ".birds",
     {
      duration: 20,
-     zPercent: 100,
      yPercent: 200,
      opacity: 0,
      scale: 0,
@@ -150,6 +150,7 @@ export default function useAnimation() {
     "#navbar",
     {
      translateY: 0,
+     opacity: 1,
      duration: 2,
     },
     3
