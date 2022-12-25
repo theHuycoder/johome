@@ -1,9 +1,9 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import Link from "next/link";
 import LanguageIcon from "@mui/icons-material/Language";
 
 import { StyledNavbar } from "./Navbar.styles";
-import { Logo } from "@/shared/components/Icons";
+import { Logo, LogoColor } from "@/shared/components/Icons";
 import { Box, Container, Typography } from "@mui/material";
 import { Button } from "@/shared/components";
 
@@ -45,13 +45,33 @@ const links = [
  },
 ];
 
-export default forwardRef(function Navbar(props, ref) {
+type LogoVariant = "monochrome" | "colorful";
+
+export default forwardRef<
+ { [key: string]: any; logoVariant: LogoVariant },
+ any
+>(function Navbar({ logoVariant = "monochrome", ...props }, ref) {
+ const [isScrolled, setIsScrolled] = useState(false);
+
+ useEffect(() => {
+  const onScroll = () => {
+   setIsScrolled(window.scrollY > 0);
+  };
+
+  window.addEventListener("scroll", onScroll);
+
+  return () => {
+   window.removeEventListener("scroll", onScroll);
+  };
+ }, []);
+
  return (
-  <StyledNavbar {...props} ref={ref}>
+  <StyledNavbar isScrolled={isScrolled} {...props} ref={ref}>
    <Container maxWidth="xl">
     <Box display="flex" alignItems="center" justifyContent="space-between">
      <Box flexBasis="15%">
-      <Logo />
+      {logoVariant === "monochrome" && <Logo />}
+      {logoVariant === "colorful" && <LogoColor />}
      </Box>
      <Box display="flex" alignItems="center" gap={4}>
       {links.map((link) => {
@@ -65,23 +85,33 @@ export default forwardRef(function Navbar(props, ref) {
       })}
      </Box>
      <Box display="flex" alignItems="center" justifyContent="flex-end" gap={2}>
-      <Box>
+      <Box sx={{ lineHeight: 0 }}>
        <LanguageIcon />
       </Box>
       <Button
        variant="text"
        fontSize="15px"
        padding="10px 24px"
-       textColor="common.black"
+       textColor={
+        logoVariant === "monochrome" ? "common.black" : "common.black"
+       }
+       color={logoVariant === "colorful" ? "common.white" : ""}
+       boxShadow={logoVariant === "monochrome" ? "none" : ""}
+       hoverColor="grey.200"
+       lineHeight="20px"
       >
        Đăng nhập
       </Button>
       <Button
        variant="contained"
-       color="common.white"
-       hoverColor="grey.200"
+       textColor={
+        logoVariant === "monochrome" ? "common.black" : "common.white"
+       }
+       color={logoVariant === "colorful" ? "primary.main" : "common.white"}
+       hoverColor={logoVariant === "monochrome" ? "grey.200" : ""}
        fontSize="15px"
        padding="10px 24px"
+       lineHeight="20px"
       >
        Đăng ký
       </Button>

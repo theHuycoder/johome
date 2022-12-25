@@ -8,7 +8,7 @@ theme.breakpoints = {
   sm: 360,
   md: 576,
   lg: 888,
-  xl: 1200,
+  xl: 1168,
  },
 };
 
@@ -169,6 +169,13 @@ theme.typography = {
   fontSize: "1.3125rem",
   lineHeight: 1.6,
   letterSpacing: "0.009375em",
+ },
+ h7: {
+  fontFamily: '"Mulish","Roboto", "Helvetica", "Arial", sans-serif',
+  fontSize: "1.125rem",
+  fontWeight: 600,
+  lineHeight: "28px",
+  letterSpacing: 0,
  },
  subtitle1: {
   fontFamily: '"Mulish","Roboto", "Helvetica", "Arial", sans-serif',

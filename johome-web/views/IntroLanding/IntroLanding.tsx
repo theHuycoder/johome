@@ -4,9 +4,11 @@ import { Box, Typography } from "@mui/material";
 import { Navbar } from "@/shared/layouts";
 import useAnimation from "./useAnimation";
 import { Button } from "@/shared/components";
+import { useRouter } from "next/router";
 
 export default function IntroLanding() {
  const { navbarRef, titleRef, ctaRef } = useAnimation();
+ const router = useRouter();
 
  return (
   <Box>
@@ -46,6 +48,7 @@ export default function IntroLanding() {
       variant="contained"
       color="common.white"
       hoverColor="grey.200"
+      onClick={() => router.push("/home")}
      >
       Đặt chỗ ngay
      </Button>

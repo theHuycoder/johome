@@ -14,12 +14,16 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/mulish": "^4.5.13",
     "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.113",
     "@mui/material": "^5.10.17",
     "@mui/styled-engine-sc": "^5.10.16",
+    "@mui/x-date-pickers": "^5.0.12",
     "@types/node": "18.11.13",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
+    "autosuggest-highlight": "^3.3.4",
     "cloudinary-react": "^1.8.1",
+    "dayjs": "^1.11.7",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
     "graphql": "^16.6.0",
@@ -30,11 +34,15 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
+    "react-google-autocomplete": "^2.7.1",
+    "react-hook-form": "^7.41.1",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-svg": "^15.1.16",
     "styled-components": "^5.3.6",
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@types/autosuggest-highlight": "^3.2.0",
     "@types/lodash.get": "^4.4.7",
     "@types/styled-components": "^5.1.26"
   }

@@ -20,6 +20,8 @@ const Button = forwardRef(
    textColor,
    fontSize,
    fontWeight,
+   padding,
+   lineHeight,
    ...buttonProps
   }: ButtonProps & any,
   ref
@@ -34,6 +36,8 @@ const Button = forwardRef(
    _hoverTextColor={hoverTextColor}
    _fontWeight={fontWeight}
    _fontSize={fontSize}
+   _lineHeight={lineHeight}
+   padding={padding}
    size={size}
    shadow={boxShadow}
    outline={outlineBorder}
