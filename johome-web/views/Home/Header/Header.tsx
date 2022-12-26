@@ -13,9 +13,9 @@ import { Grid, Box } from "@mui/material";
 import Image from "next/image";
 import GoodValues from "../GoodValues";
 
-export default function Header() {
+export default function Header({ ...props }) {
  return (
-  <StyledHeader>
+  <StyledHeader mb={15} {...props}>
    <StyledHeaderContainer>
     <Grid container>
      <Grid item lg={6}>
