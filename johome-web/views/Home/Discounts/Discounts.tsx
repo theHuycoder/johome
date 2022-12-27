@@ -7,14 +7,12 @@ import { NavButton } from "./Discounts.styles";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 
-const Discounts = () => {
+const Discounts = ({ ...props }) => {
  const theme = useTheme();
 
  const [activeSlide, setActiveSlide] = useState(0);
  const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
  const isXLarge = useMediaQuery(theme.breakpoints.up("xl"));
-
- console.log(isLarge);
 
  const cards = useMemo(
   () =>
@@ -28,7 +26,12 @@ const Discounts = () => {
  );
 
  return (
-  <Box pt={14.75} pb={33} sx={{ backgroundColor: theme.palette.grey["800"] }}>
+  <Box
+   pt={14.75}
+   pb={33}
+   sx={{ backgroundColor: theme.palette.grey["800"] }}
+   {...props}
+  >
    <Box
     marginX="auto"
     mb={9}
