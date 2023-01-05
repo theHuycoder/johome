@@ -4,6 +4,7 @@ import { TabContext, TabList, TabPanel } from "@mui/lab"
 import { ExploringTabKeys, exploringTabs } from "./Exploring.copy"
 import { StyledTab } from "./ExploringTabs.styles"
 import { ExploringCard } from "@/shared/components"
+import { exploringDeals } from "./Exploring.copy"
 
 export default function ExploringTabs() {
  const [activeTab, setActiveTab] = useState<ExploringTabKeys>(
@@ -19,11 +20,16 @@ export default function ExploringTabs() {
 
  return (
   <Box>
-   <Container sx={{padding: "0!important"}} maxWidth="xl">
+   <Container sx={{ padding: "0!important" }} maxWidth="xl">
     <Grid container>
      <Grid item xs={12} alignItems="center" justifyContent="center">
       <TabContext value={activeTab}>
-       <Box display="flex" alignItems="center" justifyContent="center" mb="68px">
+       <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        mb="68px"
+       >
         <TabList
          TabIndicatorProps={{
           sx: { display: "none" },
@@ -47,7 +53,19 @@ export default function ExploringTabs() {
          })}
         </TabList>
        </Box>
-       <TabPanel value={ExploringTabKeys.POPULAR} sx={{padding :0}}>
+       <TabPanel value={ExploringTabKeys.POPULAR} sx={{ padding: 0 }}>
+        <Box
+         display="grid"
+         columnGap={4}
+         rowGap={5}
+         sx={{ gridTemplateColumns: "1fr 1fr 1fr 1fr" }}
+        >
+         {exploringDeals.map((deal) => (
+          <ExploringCard key={deal.id} {...deal} />
+         ))}
+        </Box>
+       </TabPanel>
+       <TabPanel value={ExploringTabKeys.FAVORITE} sx={{ padding: 0 }}>
         <Box
          display="grid"
          columnGap={4}
@@ -64,24 +82,7 @@ export default function ExploringTabs() {
          <ExploringCard />
         </Box>
        </TabPanel>
-			 <TabPanel value={ExploringTabKeys.FAVORITE} sx={{padding :0}}>
-        <Box
-         display="grid"
-         columnGap={4}
-         rowGap={5}
-         sx={{ gridTemplateColumns: "1fr 1fr 1fr 1fr" }}
-        >
-         <ExploringCard />
-         <ExploringCard />
-         <ExploringCard />
-         <ExploringCard />
-         <ExploringCard />
-         <ExploringCard />
-         <ExploringCard />
-         <ExploringCard />
-        </Box>
-       </TabPanel>
-			 <TabPanel value={ExploringTabKeys.FOR_YOU} sx={{padding :0}}>
+       <TabPanel value={ExploringTabKeys.FOR_YOU} sx={{ padding: 0 }}>
         <Box
          display="grid"
          columnGap={4}

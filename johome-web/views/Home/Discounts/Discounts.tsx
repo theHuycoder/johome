@@ -2,8 +2,8 @@ import { useMemo, useState } from "react"
 import { discounts } from "./Discounts.copy"
 import { Box, useTheme, useMediaQuery, Container } from "@mui/material"
 import { SectionTitle, SectionSubtitle } from "@/shared/components/Typography"
-import { Carousel, DiscountCard } from "@/shared/components"
-import { NavButton } from "./Discounts.styles"
+import { Carousel, DiscountCard, Button } from "@/shared/components"
+import { GreatDeal, NavButton } from "./Discounts.styles"
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded"
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded"
 
@@ -38,11 +38,10 @@ const Discounts = ({ ...props }) => {
    >
     <Box>
      <SectionTitle color="grey.900" mb={2.25}>
-      Ưu đãi
+      Ưu đãi liền tay
      </SectionTitle>
      <SectionSubtitle color="grey.900" maxWidth="444px">
-      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-      Velit officia consequat duis enim velit mollit.
+      Du Xuân như ý với hàng ngàn ưu đãi siêu khủng cùng với Johome ngay.
      </SectionSubtitle>
     </Box>
     {isLarge && (
@@ -80,11 +79,30 @@ const Discounts = ({ ...props }) => {
       clickDelay={isLarge ? 300 : 0}
       options={{
        align: "start",
+       loop: true,
       }}
-      spacing={isLarge ? 1.5 : 1}
+      spacing={isLarge ? 1.6 : 1}
       style={{ cursor: "grab" }}
       SlideComponent={DiscountCard}
      />
+    </Container>
+   </Box>
+   <Box>
+    <Container maxWidth="xl">
+     <GreatDeal>
+      <Box className="title">Nhận ngay Ưu đãi</Box>
+      <Box className="percent">50%</Box>
+      <Box className="date">Từ 17/12/2023 đến 23/12/2023</Box>
+      <Box>
+       <Button
+        hoverColor="secondary.600"
+        color="secondary.main"
+        textColor="common.white"
+       >
+        Xem chi tiết
+       </Button>
+      </Box>
+     </GreatDeal>
     </Container>
    </Box>
   </Box>

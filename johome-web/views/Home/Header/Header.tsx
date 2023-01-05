@@ -1,321 +1,301 @@
-import { useRef, useState, useEffect } from "react"
+import {useRef, useState, useEffect} from "react"
 import {
- StyledHeader,
- StyledHeaderContainer,
- HeaderTitle,
- HeaderSubtitle,
- StyledQuickSearch,
- Headline,
- HeadlineDivider,
- TitleHighlight,
- BackToSearch,
+  StyledHeader,
+  StyledHeaderContainer,
+  HeaderTitle,
+  HeaderSubtitle,
+  StyledQuickSearch,
+  Headline,
+  HeadlineDivider,
+  TitleHighlight,
+  BackToSearch,
 } from "./Header.styles"
-import { Grid, Box, Container, Fade } from "@mui/material"
-import { miniAvatars, reviews } from "./Header.copy"
-import Image from "next/image"
+import {Grid, Box, Container} from "@mui/material"
+import {reviews} from "./Header.copy"
 import GoodValues from "../GoodValues"
-import VideosThumb, { videos, Thumbnail } from "./VIdeosThumb"
-import { Navbar } from "@/shared/layouts"
+import VideosThumb, {videos, Thumbnail} from "./VIdeosThumb"
+import {Navbar} from "@/shared/layouts"
 import {
- Cursor,
- StyledVideoButton,
- ThumbnailWrapper,
+  Cursor,
+  StyledVideoButton,
+  ThumbnailWrapper,
 } from "./VideoThumbs.styles"
-import { Carousel } from "@/shared/components"
+import {Carousel} from "@/shared/components"
 import ReviewCard from "./ReviewCard"
 
-export default function Header({ ...props }) {
- const [videoMode, setVideoMode] = useState(false)
- const cursorRef = useRef<HTMLDivElement>(null)
- const videoButtonRef = useRef<HTMLButtonElement>(null)
- const videoTextRef = useRef<HTMLParagraphElement>(null)
- const [activeVideo, setActiveVideo] = useState(1)
+export default function Header({...props}) {
+  const [videoMode, setVideoMode] = useState(false)
+  const cursorRef = useRef<HTMLDivElement>(null)
+  const videoButtonRef = useRef<HTMLButtonElement>(null)
+  const videoTextRef = useRef<HTMLParagraphElement>(null)
+  const [activeVideo, setActiveVideo] = useState(1)
+  const quickSearchRef = useRef<HTMLDivElement>(null)
+  const reviewRef = useRef<HTMLDivElement>(null)
+  const thumbnailRef = useRef<HTMLDivElement>(null)
 
- const onCursorClick = () => {
-  if (cursorRef.current && videoButtonRef.current) {
-   cursorRef.current.style.transition = "all 2s linear"
-   cursorRef.current.style.transform = "scale(4)"
-   videoButtonRef.current.style.opacity = "0"
-   setVideoMode(true)
-  }
- }
-
- const onBackClick = () => {
-  if (cursorRef.current && videoButtonRef.current) {
-   cursorRef.current.style.transition = "all 1s linear"
-   cursorRef.current.style.transform = "translate(50%, 0%) scale(1)"
-   setVideoMode(false)
-  }
- }
-
- useEffect(() => {
-  if (!videoButtonRef.current || !cursorRef.current || !videoTextRef.current)
-   return
-
-  const videoButton = videoButtonRef.current
-  const cursor = cursorRef.current
-  const text = videoTextRef.current
-
-  const resize = () => {
-   const cursorWidth = cursor.offsetWidth
-   videoButton.style.right = `${(cursorWidth + text.offsetWidth * 1.12) / 2}px`
+  const onCursorClick = () => {
+    if (cursorRef.current && videoButtonRef.current && quickSearchRef.current && reviewRef.current && thumbnailRef.current) {
+      cursorRef.current.style.transition = "all 4s linear"
+      cursorRef.current.style.transform = "scale(6)"
+      videoButtonRef.current.style.opacity = "0"
+      quickSearchRef.current.style.transform = "translateX(-100vw)"
+      quickSearchRef.current.style.opacity = "0"
+      reviewRef.current.style.transform = "translateX(-100vw)"
+      reviewRef.current.style.opacity = "0"
+      thumbnailRef.current.style.pointerEvents = "auto"
+      thumbnailRef.current.style.transform = "translateY(0)"
+      thumbnailRef.current.style.opacity = "1"
+      // quickSearchRef.current.style.display = "none"
+      setVideoMode(true)
+    }
   }
 
-  resize()
-  window.addEventListener("resize", resize)
+  const onBackClick = () => {
+    if (cursorRef.current && thumbnailRef.current) {
+      cursorRef.current.style.transition = "all 1.2s linear"
+      cursorRef.current.style.transform = "translate(35%, -4%) scale(1)"
+      // quickSearchRef.current.style.display = "block"
+      thumbnailRef.current.style.transform = "translateY(100%)"
+      thumbnailRef.current.style.opacity = "0"
+      thumbnailRef.current.style.pointerEvents = "none"
 
-  return () => {
-   window.removeEventListener("resize", resize)
+      setVideoMode(false)
+    }
   }
- }, [])
 
- return (
-  <>
-   <Navbar
-    logoVariant="colorful"
-    linkColor={videoMode ? "common.white" : "grey.600"}
-   />
-   <StyledHeader mb={"23px"} {...props}>
-    <Box
-     className="video-btn"
-     display="flex"
-     alignItems="center"
-     gap={1}
-     ref={videoButtonRef}
-     sx={{
-      position: "absolute",
-      top: "50%",
-      zIndex: 10000,
-      transform: "translate(50%, -50%)",
-      transition: "all 1s",
-     }}
-    >
-     <p ref={videoTextRef} className="text">
-      Khám phá ngay
-     </p>
-     <StyledVideoButton
-      color="common.white"
-      hoverColor="grey.100"
-      onClick={onCursorClick}
-      disabled={videoMode}
-     >
-      <Box height="22px">
-       <svg
-        width="19"
-        height="22"
-        viewBox="0 0 19 22"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-       >
-        <path
-         d="M0.700195 3.38562C0.700195 1.03509 3.28068 -0.402389 5.27925 0.834822L17.5797 8.44937C19.4743 9.62221 19.4743 12.3782 17.5797 13.551L5.27925 21.1655C3.28068 22.4028 0.700195 20.9653 0.700195 18.6148V3.38562Z"
-         fill="#1BBB83"
-        />
-       </svg>
-      </Box>
-     </StyledVideoButton>
-    </Box>
-    <Box
-     position="absolute"
-     sx={{ zIndex: 1, top: 0, left: 0, right: 0, bottom: 0 }}
-    >
-     <Cursor
-      onTransitionEnd={() => {
-       if (!videoMode && videoButtonRef.current) {
-        videoButtonRef.current.style.opacity = "1"
-       }
-      }}
-      ref={cursorRef}
-     ></Cursor>
-     <VideosThumb
-      activeVideo={activeVideo}
-      setActiveVideo={setActiveVideo}
-      videoMode={videoMode}
-     />
-    </Box>
-    <StyledHeaderContainer>
-     {videoMode && (
-      <ThumbnailWrapper>
-       <BackToSearch onClick={onBackClick}>
-        <svg
-         width="14"
-         height="9"
-         viewBox="0 0 14 9"
-         fill="none"
-         xmlns="http://www.w3.org/2000/svg"
-        >
-         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M4.90906 0.265208C4.50324 -0.109399 3.8706 -0.0840961 3.496 0.321722L0.2652 3.82168C-0.0883996 4.20474 -0.0883995 4.79518 0.265201 5.17824L3.496 8.67828C3.8706 9.0841 4.50323 9.10941 4.90905 8.73481C5.31487 8.36021 5.34018 7.72755 4.96558 7.32173L3.284 5.49997L13 5.49997C13.5523 5.49997 14 5.05225 14 4.49997C14 3.94768 13.5523 3.49997 13 3.49997L3.284 3.49997L4.96557 1.67829C5.34018 1.27247 5.31487 0.639814 4.90906 0.265208Z"
-          fill="#1BBB83	"
-         />
-        </svg>
-        Tìm địa điểm
-       </BackToSearch>
-       {videos.map((video, idx) => (
-        <Thumbnail
-         video={video}
-         key={video.id}
-         onClick={() => setActiveVideo(video.id)}
-        />
-       ))}
-      </ThumbnailWrapper>
-     )}
-     <Grid container>
-      <Grid item lg={6}>
-       <Box display="flex" flexDirection="column" gap={7}>
-        <Box>
-         <Headline
-          isVideoMode={videoMode}
-          mt={3}
-          mb={2}
+  useEffect(() => {
+    if (!videoButtonRef.current || !cursorRef.current || !videoTextRef.current)
+      return
+
+    const videoButton = videoButtonRef.current
+    const cursor = cursorRef.current
+    const text = videoTextRef.current
+
+    const resize = () => {
+      const cursorWidth = cursor.offsetWidth
+      videoButton.style.right = `${(cursorWidth + text.offsetWidth * 2.75) / 2}px`
+    }
+
+    resize()
+    window.addEventListener("resize", resize)
+
+    return () => {
+      window.removeEventListener("resize", resize)
+    }
+  }, [])
+
+  return (
+    <>
+      <Navbar
+        logoVariant="colorful"
+        linkColor={videoMode ? "common.white" : "grey.600"}
+        spread={videoMode}
+      />
+      <StyledHeader mb={"23px"} {...props}>
+        <Box
+          className="video-btn"
           display="flex"
           alignItems="center"
-          gap={0.5}
-         >
-          <HeadlineDivider isVideoMode={videoMode} component="span" />
-          Khám phá vùng đất Việt Nam
-         </Headline>
-         <HeaderTitle isVideoMode={videoMode}>
-          Trải nghiệm mỗi chuyến đi cùng{" "}
-          <TitleHighlight>
-           <span>Johome</span>
-          </TitleHighlight>
-          <span>
-           <svg
-            width="79"
-            height="61"
-            viewBox="0 0 79 61"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-           >
-            <g clip-path="url(#clip0_909_2050)">
-             <path
-              d="M77.0203 54.1695C74.2403 55.6395 67.7903 56.3395 61.0203 57.3495C54.2503 58.3595 46.8203 59.5395 39.1303 60.3495C31.8389 61.2025 24.4599 60.9327 17.2503 59.5495C10.4603 58.2195 4.0003 55.6795 1.2503 53.5495C-1.4997 51.4195 0.500292 50.3995 7.43029 49.5495C14.3603 48.6995 25.9103 48.0095 39.1603 47.3995C52.4103 46.7895 64.1003 47.4995 70.8903 49.0395C77.6803 50.5795 79.8103 52.8295 77.0203 54.1695Z"
-              fill="#63C4EE"
-             />
-             <path
-              d="M9.01023 54.4096C8.93547 54.4104 8.86232 54.3879 8.80093 54.3452C8.73955 54.3025 8.69298 54.2417 8.6677 54.1714C8.64241 54.101 8.63966 54.0245 8.65983 53.9525C8.67999 53.8805 8.72208 53.8166 8.78023 53.7696C17.1178 47.3538 27.3601 43.908 37.8802 43.9796C48.9608 44.1432 59.7525 47.5388 68.9302 53.7496C68.9948 53.7924 69.0438 53.8549 69.07 53.9277C69.0962 54.0006 69.0982 54.0799 69.0758 54.154C69.0533 54.2281 69.0076 54.293 68.9453 54.339C68.8831 54.3851 68.8077 54.4098 68.7302 54.4096H9.01023Z"
-              fill="#FFAC12"
-             />
-             <path
-              d="M62.25 56.5598H15.61C15.5158 56.5619 15.4227 56.5384 15.3408 56.4917C15.2588 56.4451 15.1911 56.377 15.1449 56.2948C15.0987 56.2127 15.0757 56.1195 15.0783 56.0252C15.081 55.9309 15.1092 55.8392 15.16 55.7598C17.16 52.5498 25.41 40.8498 37.94 40.7598H38.1C52.16 40.7598 60.64 52.5398 62.7 55.7598C62.7474 55.8398 62.7729 55.9309 62.774 56.0239C62.775 56.1169 62.7515 56.2086 62.7059 56.2896C62.6603 56.3707 62.5942 56.4383 62.5142 56.4858C62.4341 56.5332 62.343 56.5587 62.25 56.5598Z"
-              fill="#FFCA00"
-             />
-             <path
-              d="M39.6097 43.9808C38.7363 44.4607 37.7725 44.7536 36.7797 44.8408C35.4891 44.9602 34.1945 44.6585 33.0897 43.9808C35.4297 34.9808 27.4297 20.6308 27.4297 20.6308L28.6697 20.0508L29.7597 19.5508C41.9897 32.2808 39.6097 43.9808 39.6097 43.9808Z"
-              fill="#4D4F4E"
-             />
-             <path
-              d="M36.7797 44.8408C35.4891 44.9602 34.1945 44.6585 33.0897 43.9808C35.4297 34.9808 27.4297 20.6308 27.4297 20.6308L28.6697 20.0508C35.6697 27.5808 36.7297 44.1208 36.7797 44.8408Z"
-              fill="#383838"
-             />
-             <path
-              d="M29.0203 20.2809C29.0203 20.2809 17.6703 12.8808 12.5103 25.3408C7.3503 37.8008 14.3303 28.2109 14.3303 28.2109C14.3303 28.2109 15.6103 32.6009 16.4603 30.8209C17.3103 29.0409 17.8603 27.9009 17.8603 27.9009C17.8603 27.9009 18.5603 31.0309 19.1003 29.9009C19.6403 28.7709 20.4503 26.2809 20.4503 26.2809C20.4503 26.2809 21.0003 28.4608 21.4003 28.0508C21.8003 27.6408 23.0503 21.1709 29.0203 20.2809Z"
-              fill="#32D4C5"
-             />
-             <path
-              d="M28.8398 20.399C28.8398 20.399 34.1898 7.93904 45.3798 15.469C56.5698 22.999 45.4498 18.859 45.4498 18.859C45.4498 18.859 46.8098 23.239 45.1098 22.219L42.3398 20.559C42.3398 20.559 43.4798 23.559 42.3998 22.899C41.3198 22.239 39.2498 20.599 39.2498 20.599C39.2498 20.599 39.9998 22.719 39.4398 22.599C38.8798 22.479 34.2898 17.819 28.8398 20.399Z"
-              fill="#21C1AD"
-             />
-             <path
-              d="M28.8198 20.5697C28.8198 20.5697 23.8198 7.97972 37.0298 5.38972C50.2398 2.79972 39.4798 7.73971 39.4798 7.73971C39.4798 7.73971 43.4798 9.86972 41.6098 10.3497L38.4798 11.1397C38.4798 11.1397 41.3998 12.4397 40.1798 12.7497C38.9598 13.0597 36.3298 13.3497 36.3298 13.3497C36.3298 13.3497 38.3298 14.3497 37.8698 14.6297C37.4098 14.9097 30.8498 14.8897 28.8198 20.5697Z"
-              fill="#32D4C5"
-             />
-             <path
-              d="M28.7497 20.1395C28.7497 20.1395 28.5297 6.57946 15.3097 9.27946C2.08971 11.9795 13.9697 12.3895 13.9697 12.3895C13.9697 12.3895 11.0497 15.9195 12.9697 15.6295L16.1697 15.1395C16.1697 15.1395 13.9797 17.4695 15.1697 17.2895C16.3597 17.1095 18.9597 16.3495 18.9597 16.3495C18.9597 16.3495 17.4697 18.0295 18.0297 18.1295C18.5897 18.2295 24.6697 15.6795 28.7497 20.1395Z"
-              fill="#32D4C5"
-             />
-             <path
-              d="M28.8698 20.4407C28.8698 20.4407 25.8698 16.3607 25.1798 13.2007C24.4898 10.0407 25.8298 5.35068 27.5898 2.52068C29.3498 -0.309319 28.7398 4.96068 28.7398 4.96068C28.7398 4.96068 30.6698 4.13068 30.6698 4.75068C30.3303 5.62784 29.847 6.44232 29.2398 7.16068C29.2398 7.16068 31.5298 6.81068 30.9398 7.39068C30.3498 7.97068 27.4798 16.1507 28.8698 20.4407Z"
-              fill="#21C1AD"
-             />
-             <path
-              d="M63.7596 5.42004C63.7596 6.85751 63.1886 8.23611 62.1721 9.25255C61.1557 10.269 59.7771 10.84 58.3396 10.84C57.5961 10.8417 56.8605 10.6885 56.1796 10.39C55.0375 9.89314 54.1013 9.01803 53.5287 7.91195C52.956 6.80587 52.7818 5.5363 53.0353 4.31685C53.2889 3.09739 53.9546 2.00246 54.9207 1.21625C55.8867 0.430053 57.0941 0.000563275 58.3396 3.71782e-05C59.0521 -0.00260665 59.7581 0.135781 60.4169 0.407226C61.0756 0.67867 61.6742 1.0778 62.178 1.58162C62.6818 2.08544 63.081 2.68399 63.3524 3.34277C63.6239 4.00155 63.7622 4.70753 63.7596 5.42004Z"
-              fill="#FFCA00"
-             />
-             <path
-              d="M51.7802 49.1693C51.7802 49.6793 49.3502 50.0893 46.3502 50.0893C43.3502 50.0893 40.9102 49.6793 40.9102 49.1693C40.9102 48.6593 43.3402 48.2793 46.3502 48.2793C49.3602 48.2793 51.7802 48.6493 51.7802 49.1693Z"
-              fill="#FFB000"
-             />
-             <path
-              d="M45.9004 48.7597L54.7204 29.4297H55.4604L46.4604 49.0097C46.4434 49.0452 46.4194 49.0769 46.3898 49.1028C46.3603 49.1288 46.3257 49.1484 46.2883 49.1606C46.2509 49.1727 46.2114 49.1772 46.1722 49.1736C46.133 49.17 46.095 49.1584 46.0604 49.1397C46.0239 49.1266 45.9905 49.1061 45.9624 49.0794C45.9343 49.0527 45.912 49.0205 45.8969 48.9848C45.8819 48.9491 45.8744 48.9106 45.875 48.8719C45.8756 48.8331 45.8843 48.7949 45.9004 48.7597Z"
-              fill="#D63C12"
-             />
-             <path
-              d="M67.1797 37.7397C65.1175 37.7626 63.0618 37.5035 61.0697 36.9698C59.4415 36.5684 57.8414 36.0606 56.2797 35.4497C55.2197 35.0397 54.0897 34.5497 52.9197 33.9797C52.0997 33.5797 51.2597 33.1398 50.3897 32.6498C49.0097 31.8698 47.5597 30.9797 46.0697 29.9497C44.5797 28.9197 43.2097 27.8697 41.7197 26.6297C41.7197 26.6297 50.9797 20.9297 58.3297 23.9797H58.4197L58.9497 24.2198C66.3997 27.9298 67.1797 37.7397 67.1797 37.7397Z"
-              fill="#FF642E"
-             />
-             <path
-              d="M58.3395 23.9805C54.4395 27.9805 51.9495 30.7305 50.3395 32.6505C48.9595 31.8705 47.5095 30.9805 46.0195 29.9505C46.0695 29.9505 51.5995 24.4705 58.3395 23.9805Z"
-              fill="#FFCA00"
-             />
-             <path
-              d="M67.1799 37.7405C65.1177 37.7633 63.062 37.5042 61.0699 36.9705C59.4417 36.5691 57.8416 36.0613 56.2799 35.4505C55.2199 35.0405 54.0899 34.5505 52.9199 33.9805L58.3399 23.9805H58.4299L58.9599 24.2205C66.3999 27.9305 67.1799 37.7405 67.1799 37.7405Z"
-              fill="#EF3F0F"
-             />
-             <path
-              d="M61.0703 36.9706C59.4421 36.5692 57.842 36.0615 56.2803 35.4506C56.8503 33.0506 57.5703 29.4506 58.2803 23.9806C58.2803 23.9806 58.2803 23.9206 58.2803 23.8906C58.301 23.9373 58.3279 23.9811 58.3603 24.0206C61.6103 29.0006 61.2103 35.5106 61.0703 36.9706Z"
-              fill="#FFAC12"
-             />
-             <path
-              d="M63.7598 5.42004C63.7598 6.85751 63.1888 8.23611 62.1724 9.25255C61.1559 10.269 59.7773 10.84 58.3398 10.84V3.71782e-05C59.0523 -0.00260665 59.7583 0.135781 60.4171 0.407226C61.0759 0.67867 61.6744 1.0778 62.1783 1.58162C62.6821 2.08544 63.0812 2.68399 63.3527 3.34277C63.6241 4.00155 63.7625 4.70753 63.7598 5.42004Z"
-              fill="#FFAC12"
-             />
-            </g>
-            <defs>
-             <clipPath id="clip0_909_2050">
-              <rect width="78.23" height="60.8" fill="white" />
-             </clipPath>
-            </defs>
-           </svg>
-          </span>
-         </HeaderTitle>
-         <HeaderSubtitle
-          color={videoMode ? "white" : "grey.500"}
-          maxWidth="100%"
-         >
-          Tìm và đặt vé ngay để có trải nghiệm tuyệt vời nhất.
-         </HeaderSubtitle>
+          gap={1}
+          ref={videoButtonRef}
+          sx={{
+            position: "absolute",
+            top: "20%",
+            zIndex: 10000,
+            transform: "translate(50%, -50%)",
+            transition: "all 1s",
+          }}
+        >
+          <p ref={videoTextRef} className="text">
+            Khám phá ngay
+          </p>
+          <StyledVideoButton
+            color="common.white"
+            hoverColor="grey.100"
+            onClick={onCursorClick}
+            disabled={videoMode}
+          >
+            <Box height="22px">
+              <svg
+                width="19"
+                height="22"
+                viewBox="0 0 19 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.700195 3.38562C0.700195 1.03509 3.28068 -0.402389 5.27925 0.834822L17.5797 8.44937C19.4743 9.62221 19.4743 12.3782 17.5797 13.551L5.27925 21.1655C3.28068 22.4028 0.700195 20.9653 0.700195 18.6148V3.38562Z"
+                  fill="#1BBB83"
+                />
+              </svg>
+            </Box>
+          </StyledVideoButton>
         </Box>
-        {!videoMode && <StyledQuickSearch />}
-        {!videoMode && (
-         <HeaderSubtitle mb={2}>
-          {/* <Box display="flex" alignItems="center" ml="5px">
-           {miniAvatars.map((avatar) => (
-            <MiniAvatar key={avatar.key} ml="-5px">
-             <Image src={avatar.url} fill priority alt={avatar.key} />
-            </MiniAvatar>
-           ))}
-           <MiniAvatar ml="-10px">3K+</MiniAvatar>
-          </Box> */}
-          <Box>
-           <Carousel
-            scrollDelay={250}
-            clickDelay={300}
-            options={{
-             align: "start",
+        <Box
+          position="absolute"
+          sx={{zIndex: 1, top: 0, left: 0, right: 0, bottom: 0}}
+        >
+          <Cursor
+            onTransitionEnd={() => {
+              if (!videoMode && videoButtonRef.current && quickSearchRef.current && reviewRef.current) {
+                videoButtonRef.current.style.opacity = "1"
+                quickSearchRef.current.style.transform = "translateX(0)"
+                quickSearchRef.current.style.opacity = "1"
+                reviewRef.current.style.transform = "translateX(0)"
+                reviewRef.current.style.opacity = "1"
+              }
             }}
-            spacing={1.5}
-            style={{ cursor: "grab" }}
-            slides={reviews}
-            SlideComponent={ReviewCard}
-           />
-          </Box>
-         </HeaderSubtitle>
-        )}
-       </Box>
-      </Grid>
-      <Grid item lg={12} mt={17}></Grid>
-     </Grid>
-    </StyledHeaderContainer>
-   </StyledHeader>
-   <Box>
-    <Container maxWidth="xl">
-     <GoodValues />
-    </Container>
-   </Box>
-  </>
- )
+            ref={cursorRef}
+          ></Cursor>
+          <VideosThumb
+            activeVideo={activeVideo}
+            setActiveVideo={setActiveVideo}
+            videoMode={videoMode}
+          />
+        </Box>
+        <StyledHeaderContainer>
+          <ThumbnailWrapper ref={thumbnailRef}>
+            <BackToSearch onClick={onBackClick}>
+              <svg
+                width="14"
+                height="9"
+                viewBox="0 0 14 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M4.90906 0.265208C4.50324 -0.109399 3.8706 -0.0840961 3.496 0.321722L0.2652 3.82168C-0.0883996 4.20474 -0.0883995 4.79518 0.265201 5.17824L3.496 8.67828C3.8706 9.0841 4.50323 9.10941 4.90905 8.73481C5.31487 8.36021 5.34018 7.72755 4.96558 7.32173L3.284 5.49997L13 5.49997C13.5523 5.49997 14 5.05225 14 4.49997C14 3.94768 13.5523 3.49997 13 3.49997L3.284 3.49997L4.96557 1.67829C5.34018 1.27247 5.31487 0.639814 4.90906 0.265208Z"
+                  fill="#1BBB83	"
+                />
+              </svg>
+              Tìm địa điểm
+            </BackToSearch>
+            {videos.map((video, idx) => (
+              <Thumbnail
+                active={idx === activeVideo - 1}
+                video={video}
+                key={video.id}
+                onClick={() => setActiveVideo(video.id)}
+              />
+            ))}
+          </ThumbnailWrapper>
+          <Grid container>
+            <Grid item lg={6}>
+              <Box display="flex" flexDirection="column" gap={7}>
+                <Box>
+                  <Headline
+                    isVideoMode={videoMode}
+                    mt={3}
+                    mb={2}
+                    display="flex"
+                    alignItems="center"
+                    gap={0.5}
+                  >
+                    <HeadlineDivider isVideoMode={videoMode} component="span"/>
+                    Khám phá vùng đất Việt Nam
+                  </Headline>
+                  <HeaderTitle isVideoMode={videoMode}>
+                    Trải nghiệm mỗi chuyến đi cùng{" "}
+                    <TitleHighlight>
+                      <span>Johome</span>
+                    </TitleHighlight>
+                    <span>
+          <svg width="110" height="85" viewBox="0 0 110 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M108.321 75.6856C104.409 77.7394 95.3301 78.7175 85.8013 80.1286C76.2725 81.5398 65.8147 83.1885 54.991 84.3202C44.7283 85.512 34.3423 85.135 24.1947 83.2025C14.6377 81.3442 5.54523 77.7953 1.67458 74.8193C-2.19606 71.8433 0.618945 70.4181 10.373 69.2305C20.127 68.0429 36.3837 67.0788 55.0332 66.2265C73.6827 65.3742 90.1364 66.3663 99.6934 68.5179C109.25 70.6696 112.248 73.8133 108.321 75.6856Z"
+              fill="#63C4EE"/>
+            <path
+              d="M12.5968 76.021C12.4915 76.0221 12.3886 75.9906 12.3022 75.931C12.2158 75.8713 12.1502 75.7865 12.1146 75.6881C12.079 75.5898 12.0752 75.483 12.1036 75.3824C12.1319 75.2818 12.1912 75.1924 12.273 75.1268C24.0082 66.1626 38.4244 61.3482 53.2315 61.4482C68.8275 61.6767 84.0168 66.4211 96.9346 75.0988C97.0254 75.1586 97.0944 75.2459 97.1313 75.3477C97.1682 75.4495 97.171 75.5604 97.1394 75.6639C97.1078 75.7674 97.0434 75.8581 96.9558 75.9224C96.8682 75.9867 96.7621 76.0213 96.6531 76.021H12.5968Z"
+              fill="#FFAC12"/>
+            <path
+              d="M87.5321 79.0255H21.886C21.7533 79.0285 21.6223 78.9957 21.507 78.9305C21.3917 78.8653 21.2964 78.7702 21.2313 78.6554C21.1662 78.5405 21.1338 78.4103 21.1376 78.2786C21.1414 78.1469 21.1811 78.0187 21.2526 77.9078C24.0676 73.4228 35.6795 57.0756 53.3156 56.9498H53.5408C73.3304 56.9498 85.266 73.4088 88.1655 77.9078C88.2322 78.0196 88.2681 78.1469 88.2695 78.2768C88.271 78.4068 88.238 78.5348 88.1738 78.6481C88.1096 78.7614 88.0165 78.8559 87.9039 78.9221C87.7912 78.9884 87.663 79.024 87.5321 79.0255Z"
+              fill="#FFCA00"/>
+            <path
+              d="M55.6657 61.4499C54.4364 62.1205 53.0798 62.5297 51.6825 62.6515C49.8659 62.8183 48.0438 62.3967 46.4888 61.4499C49.7823 48.8751 38.5223 28.8253 38.5223 28.8253L40.2676 28.0149L41.8018 27.3163C59.0156 45.1027 55.6657 61.4499 55.6657 61.4499Z"
+              fill="#4D4F4E"/>
+            <path
+              d="M51.6825 62.6515C49.8659 62.8183 48.0438 62.3967 46.4888 61.4499C49.7823 48.8751 38.5223 28.8253 38.5223 28.8253L40.2676 28.0149C50.1201 38.5358 51.6121 61.6455 51.6825 62.6515Z"
+              fill="#383838"/>
+            <path
+              d="M40.7611 28.3364C40.7611 28.3364 24.7859 17.9971 17.5231 35.4062C10.2604 52.8153 20.0848 39.4162 20.0848 39.4162C20.0848 39.4162 21.8864 45.5499 23.0828 43.0629C24.2792 40.5758 25.0533 38.983 25.0533 38.983C25.0533 38.983 26.0385 43.3563 26.7986 41.7774C27.5586 40.1986 28.6987 36.7196 28.6987 36.7196C28.6987 36.7196 29.4729 39.7655 30.0359 39.1926C30.5989 38.6198 32.3582 29.5799 40.7611 28.3364Z"
+              fill="#32D4C5"/>
+            <path
+              d="M40.5071 28.5015C40.5071 28.5015 48.0372 11.0925 63.7873 21.6134C79.5373 32.1342 63.8858 26.3499 63.8858 26.3499C63.8858 26.3499 65.8 32.4696 63.4072 31.0444L59.5084 28.7251C59.5084 28.7251 61.113 32.9167 59.5929 31.9945C58.0728 31.0724 55.1592 28.781 55.1592 28.781C55.1592 28.781 56.2149 31.743 55.4267 31.5754C54.6385 31.4077 48.178 24.8968 40.5071 28.5015Z"
+              fill="#21C1AD"/>
+            <path
+              d="M40.4788 28.74C40.4788 28.74 33.4413 11.1493 52.0344 7.53055C70.6276 3.91181 55.4828 10.814 55.4828 10.814C55.4828 10.814 61.1129 13.79 58.4808 14.4606L54.0753 15.5644C54.0753 15.5644 58.1852 17.3808 56.4681 17.8139C54.7509 18.247 51.0492 18.6522 51.0492 18.6522C51.0492 18.6522 53.8642 20.0494 53.2167 20.4406C52.5693 20.8319 43.336 20.8039 40.4788 28.74Z"
+              fill="#32D4C5"/>
+            <path
+              d="M40.3802 28.1388C40.3802 28.1388 40.0706 9.19285 21.4633 12.9653C2.85607 16.7377 19.5773 17.3106 19.5773 17.3106C19.5773 17.3106 15.4673 22.2427 18.1697 21.8375L22.6738 21.1529C22.6738 21.1529 19.5913 24.4083 21.2663 24.1568C22.9412 23.9053 26.6007 22.8435 26.6007 22.8435C26.6007 22.8435 24.5035 25.1908 25.2917 25.3305C26.0799 25.4702 34.6376 21.9073 40.3802 28.1388Z"
+              fill="#32D4C5"/>
+            <path
+              d="M40.5493 28.5597C40.5493 28.5597 36.3268 22.8591 35.3556 18.444C34.3844 14.0289 36.2705 7.47601 38.7477 3.52194C41.2249 -0.432129 40.3663 6.9311 40.3663 6.9311C40.3663 6.9311 43.0828 5.77143 43.0828 6.63769C42.6049 7.86325 41.9247 9.00124 41.0701 10.0049C41.0701 10.0049 44.2933 9.51591 43.4628 10.3263C42.6324 11.1367 38.5929 22.5657 40.5493 28.5597Z"
+              fill="#21C1AD"/>
+            <path
+              d="M89.6569 7.57291C89.6569 9.58134 88.8531 11.5075 87.4225 12.9277C85.9918 14.3479 84.0515 15.1457 82.0282 15.1457C80.9818 15.1481 79.9464 14.934 78.988 14.517C77.3804 13.8227 76.0628 12.6 75.2568 11.0546C74.4508 9.50919 74.2056 7.73536 74.5624 6.03154C74.9192 4.32772 75.8563 2.79788 77.216 1.6994C78.5757 0.60092 80.2751 0.000838599 82.0282 0.000103539C83.0311 -0.00359042 84.0247 0.189765 84.952 0.569026C85.8792 0.948287 86.7217 1.50595 87.4308 2.20989C88.1399 2.91383 88.7017 3.75011 89.0838 4.67056C89.4658 5.591 89.6606 6.5774 89.6569 7.57291Z"
+              fill="#FFCA00"/>
+            <path
+              d="M72.7957 68.6992C72.7957 69.4118 69.3755 69.9847 65.153 69.9847C60.9304 69.9847 57.4961 69.4118 57.4961 68.6992C57.4961 67.9867 60.9164 67.4557 65.153 67.4557C69.3896 67.4557 72.7957 67.9727 72.7957 68.6992Z"
+              fill="#FFB000"/>
+            <path
+              d="M64.5199 68.1269L76.9341 41.1191H77.9757L65.3081 68.4762C65.2843 68.5259 65.2505 68.5701 65.2088 68.6064C65.1672 68.6426 65.1186 68.6701 65.0659 68.6871C65.0132 68.704 64.9576 68.7102 64.9025 68.7052C64.8473 68.7002 64.7938 68.6841 64.7451 68.6579C64.6938 68.6396 64.6468 68.6109 64.6072 68.5736C64.5676 68.5364 64.5362 68.4914 64.5151 68.4415C64.4939 68.3916 64.4834 68.3379 64.4842 68.2837C64.4851 68.2296 64.4972 68.1762 64.5199 68.1269Z"
+              fill="#D63C12"/>
+            <path
+              d="M94.4707 52.7299C91.5681 52.7618 88.6748 52.3998 85.8709 51.6541C83.5792 51.0933 81.327 50.3838 79.1289 49.5303C77.637 48.9575 76.0465 48.2729 74.3997 47.4764C73.2455 46.9176 72.0632 46.3028 70.8387 45.6182C68.8963 44.5284 66.8554 43.2849 64.7583 41.8457C62.6611 40.4066 60.7328 38.9396 58.6356 37.2071C58.6356 37.2071 71.6691 29.243 82.0143 33.5045H82.141L82.887 33.8398C93.3729 39.0234 94.4707 52.7299 94.4707 52.7299Z"
+              fill="#FF642E"/>
+            <path
+              d="M82.0281 33.5055C76.5388 39.0943 73.0341 42.9366 70.768 45.6192C68.8257 44.5294 66.7848 43.2859 64.6876 41.8468C64.758 41.8468 72.5415 34.1901 82.0281 33.5055Z"
+              fill="#FFCA00"/>
+            <path
+              d="M94.471 52.7309C91.5684 52.7628 88.675 52.4009 85.8712 51.6551C83.5795 51.0943 81.3273 50.3848 79.1292 49.5313C77.6372 48.9585 76.0467 48.2739 74.4 47.4775L82.0281 33.5055H82.1553L82.9013 33.8408C93.3732 39.0244 94.471 52.7309 94.471 52.7309Z"
+              fill="#EF3F0F"/>
+            <path
+              d="M85.8712 51.6551C83.5795 51.0943 81.3273 50.3848 79.1292 49.5313C79.9315 46.1781 80.9454 41.1484 81.9447 33.5057C81.9447 33.5057 81.9447 33.4219 81.9447 33.38C81.9739 33.4452 82.0117 33.5063 82.0573 33.5616C86.6317 40.5196 86.0682 49.6152 85.8712 51.6551Z"
+              fill="#FFAC12"/>
+            <path
+              d="M89.6569 7.57291C89.6569 9.58134 88.8531 11.5075 87.4225 12.9277C85.9918 14.3479 84.0515 15.1457 82.0282 15.1457V0.000103539C83.0311 -0.00359042 84.0247 0.189765 84.952 0.569026C85.8792 0.948287 86.7217 1.50595 87.4308 2.20989C88.1399 2.91383 88.7017 3.75011 89.0838 4.67056C89.4658 5.591 89.6606 6.5774 89.6569 7.57291Z"
+              fill="#FFAC12"/>
+            </svg>
+          </span>
+                  </HeaderTitle>
+                  <HeaderSubtitle
+                    color={videoMode ? "white" : "grey.500"}
+                    maxWidth="100%"
+                  >
+                    Tìm và đặt vé ngay để có trải nghiệm tuyệt vời nhất.
+                  </HeaderSubtitle>
+                </Box>
+                {<StyledQuickSearch ref={quickSearchRef}/>}
+                {(
+                  <HeaderSubtitle ref={reviewRef} mb={2}>
+                    <Box>
+                      <Carousel
+                        scrollDelay={250}
+                        clickDelay={300}
+                        options={{
+                          align: "start",
+                        }}
+                        spacing={1.5}
+                        style={{cursor: "grab"}}
+                        slides={reviews}
+                        SlideComponent={ReviewCard}
+                      />
+                    </Box>
+                  </HeaderSubtitle>
+                )}
+              </Box>
+            </Grid>
+            <Grid item lg={12} mt={17}></Grid>
+          </Grid>
+        </StyledHeaderContainer>
+      </StyledHeader>
+      <Box>
+        <Container maxWidth="xl">
+          <GoodValues/>
+        </Container>
+      </Box>
+    </>
+  )
 }

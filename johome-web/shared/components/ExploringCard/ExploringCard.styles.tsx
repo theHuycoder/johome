@@ -10,7 +10,23 @@ export const CardWrapper = styled(Box)`
   min-height: ${spacing(48.75)};
   overflow: hidden;
   background-color: ${palette.common.white};
+  cursor: pointer;
+  position: relative;
  `}
+`
+
+export const FavoriteIcon = styled(Box)`
+ position: absolute;
+ background: rgba(17, 24, 39, 0.5);
+ border-radius: 8px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ right: 20px;
+ top: 20px;
+ z-index: 10;
+ width: 32px;
+ height: 32px;
 `
 
 export const ImageWrapper = styled(Box)`
@@ -24,8 +40,7 @@ export const ImageWrapper = styled(Box)`
 export const ContentWrapper = styled(Box)`
  ${({ theme: { spacing } }: any) => css`
   padding-bottom: ${spacing(2)};
-	border-bottom: 1px solid #E5E7EB;
-	
+  border-bottom: 1px solid #e5e7eb;
  `}
 `
 export const Title = styled(Box)`
@@ -59,5 +74,4 @@ export const Price = styled(Box)`
  line-height: 28px;
  letter-spacing: 0em;
  text-align: left;
- 
 `
