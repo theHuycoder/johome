@@ -1,4 +1,8 @@
-export { default as PriceCard } from "./PriceCard";
-export { default as Button } from "./Button";
-export { default as Carousel } from "./Carousel";
-export { default as DiscountCard } from "./DiscountCard";
+export { default as PriceCard } from "./PriceCard"
+export { default as Button } from "./Button"
+export { default as Carousel } from "./Carousel"
+export { default as DiscountCard } from "./DiscountCard"
+export { default as ExploringCard } from "./ExploringCard"
+export { default as HomestayVariantCard } from "./HomestayVariantCard"
+export { default as TextInput } from "./TextInput"
+export { default as CheckBox } from "./CheckBox"

@@ -213,6 +213,13 @@ theme.typography = {
   letterSpacing: "0.078125em",
   textTransform: "uppercase",
  },
+ button1: {
+  fontFamily: '"Mulish","Roboto", "Helvetica", "Arial", sans-serif',
+  fontSize: "0.875rem",
+  fontWeight: 800,
+  lineHeight: "1rem",
+  letterSpacing: "0.5px",
+ },
  caption: {
   fontFamily: '"Mulish","Roboto", "Helvetica", "Arial", sans-serif',
   fontWeight: 400,

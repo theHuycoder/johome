@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
  CardWrapper,
  Card,
@@ -6,20 +6,25 @@ import {
  Title,
  Subtitle,
  ExpandedImage,
-} from "./DiscountCard.styles";
-import { Box } from "@mui/material";
-import { Fade } from "@mui/material";
-import { useTheme, useMediaQuery } from "@mui/material";
-import Image from "next/image";
+} from "./DiscountCard.styles"
+import { Box } from "@mui/material"
+import { Fade } from "@mui/material"
+import { useTheme, useMediaQuery } from "@mui/material"
+import Image from "next/image"
 
 type DiscountCardProps = {
- active?: boolean;
- title?: string;
- subtitle?: string;
- noSsr?: boolean;
- fadeColor?: string;
- image?: string;
-};
+ active?: boolean
+ title?: string
+ subtitle?: string
+ noSsr?: boolean
+ fadeColor?: string
+ image?: string
+ salePercent?: number
+ date?: {
+  from: string
+  to: string
+ }
+}
 
 export default function DiscountCard({
  active = false,
@@ -30,11 +35,11 @@ export default function DiscountCard({
  image,
  ...props
 }: DiscountCardProps) {
- const theme = useTheme();
- const isLarge = useMediaQuery(theme.breakpoints.up("lg"), { noSsr });
- const [visible, setVisible] = useState(true);
+ const theme = useTheme()
+ const isLarge = useMediaQuery(theme.breakpoints.up("lg"), { noSsr })
+ const [visible, setVisible] = useState(true)
 
- const [expanded, setExpanded] = useState(active ? 1 : 0);
+ const [expanded, setExpanded] = useState(active ? 1 : 0)
 
  return (
   <CardWrapper
@@ -42,8 +47,8 @@ export default function DiscountCard({
    fadecolor={fadeColor ? fadeColor : theme.palette.background.level2}
    active={active ? 1 : 0}
    onTransitionEnd={() => {
-    setVisible(true);
-    setExpanded(isLarge && active ? 1 : 0);
+    setVisible(true)
+    setExpanded(isLarge && active ? 1 : 0)
    }}
    py={4}
    px={4}
@@ -74,5 +79,5 @@ export default function DiscountCard({
     </Card>
    </Fade>
   </CardWrapper>
- );
+ )
 }

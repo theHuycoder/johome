@@ -51,7 +51,7 @@ export default forwardRef<
  { [key: string]: any; logoVariant: LogoVariant; shouldToggle?: boolean },
  any
 >(function Navbar(
- { logoVariant = "monochrome", shouldToggle = true, ...props },
+ { logoVariant = "monochrome", shouldToggle = true, linkColor = "grey.600",...props },
  ref
 ) {
  const [isScrolled, setIsScrolled] = useState(false);
@@ -82,7 +82,7 @@ export default forwardRef<
       {links.map((link) => {
        return (
         <Link key={link.id} href={link.href}>
-         <Typography fontWeight={600} color="grey.600">
+         <Typography fontWeight={600} color={linkColor || "grey.600"}>
           {link.label.vn}
          </Typography>
         </Link>
@@ -100,7 +100,7 @@ export default forwardRef<
        textColor={
         logoVariant === "monochrome" ? "common.black" : "common.black"
        }
-       color={logoVariant === "colorful" ? "common.white" : ""}
+       color={logoVariant === "colorful" ? "common.white" : "primary.main"}
        boxShadow={logoVariant === "monochrome" ? "none" : ""}
        hoverColor="grey.200"
        lineHeight="20px"

@@ -1,35 +1,35 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo } from "react"
 import {
  ExperimentOptions,
  detailTabs,
  DetailTabs,
  getExperimentContent,
-} from "./ExperimentTabs.copy";
-import { DetailsWrapper, DetailTab } from "./ExperimentTabs.styles";
+} from "./ExperimentTabs.copy"
+import { DetailsWrapper, DetailTab } from "./ExperimentTabs.styles"
 
-import Box from "@mui/material/Box";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
+import Box from "@mui/material/Box"
+import TabContext from "@mui/lab/TabContext"
+import TabList from "@mui/lab/TabList"
+import TabPanel from "@mui/lab/TabPanel"
 
 type ExperimentDetailsProps = {
- activeOption?: ExperimentOptions;
-};
+ activeOption?: ExperimentOptions
+}
 
 export default function ExperimentDetails({
  activeOption,
  ...props
 }: ExperimentDetailsProps) {
- const [activeTab, setActiveTab] = useState<DetailTabs>(DetailTabs.GENERAL);
+ const [activeTab, setActiveTab] = useState<DetailTabs>(DetailTabs.GENERAL)
 
  const handleChange = (event: React.SyntheticEvent, newValue: DetailTabs) => {
-  setActiveTab(newValue);
- };
+  setActiveTab(newValue)
+ }
 
  const content = useMemo(
   () => (activeOption ? getExperimentContent(activeOption) : null),
   [activeOption]
- );
+ )
 
  return (
   <DetailsWrapper {...props}>
@@ -66,5 +66,5 @@ export default function ExperimentDetails({
     </TabContext>
    </Box>
   </DetailsWrapper>
- );
+ )
 }

@@ -9,6 +9,14 @@ import "@fontsource/mulish/600.css";
 import "@fontsource/mulish/700.css";
 import "@fontsource/mulish/800.css";
 
+/* Importing the font Oswald from the font source. */
+import "@fontsource/oswald/200.css";
+import "@fontsource/oswald/300.css";
+import "@fontsource/oswald/400.css";
+import "@fontsource/oswald/500.css";
+import "@fontsource/oswald/600.css";
+import "@fontsource/oswald/700.css";
+
 import theme from "@/styles/theme.default";
 
 import {

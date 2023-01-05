@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components";
+import { createGlobalStyle, css } from "styled-components"
 
 const globalStyles = createGlobalStyle<any>`
 ${({ theme: { typography, palette } }) =>
@@ -100,7 +100,7 @@ ${({ theme: { typography, palette } }) =>
    font-style: normal;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
-   background-color: ${palette.background.default};
+   background-color: #ffffff !important;
    color: ${palette.text.primary};
    box-sizing: border-box;
    margin: 0;
@@ -185,6 +185,6 @@ ${({ theme: { typography, palette } }) =>
   }
  `};
 
-`;
+`
 
-export default globalStyles;
+export default globalStyles

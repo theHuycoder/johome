@@ -1,18 +1,18 @@
-import { useMemo, useState } from "react";
-import { discounts } from "./Discounts.copy";
-import { Box, useTheme, useMediaQuery, Container } from "@mui/material";
-import { SectionTitle, SectionSubtitle } from "@/shared/components/Typography";
-import { Carousel, DiscountCard } from "@/shared/components";
-import { NavButton } from "./Discounts.styles";
-import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
-import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
+import { useMemo, useState } from "react"
+import { discounts } from "./Discounts.copy"
+import { Box, useTheme, useMediaQuery, Container } from "@mui/material"
+import { SectionTitle, SectionSubtitle } from "@/shared/components/Typography"
+import { Carousel, DiscountCard } from "@/shared/components"
+import { NavButton } from "./Discounts.styles"
+import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded"
+import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded"
 
 const Discounts = ({ ...props }) => {
- const theme = useTheme();
+ const theme = useTheme()
 
- const [activeSlide, setActiveSlide] = useState(0);
- const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
- const isXLarge = useMediaQuery(theme.breakpoints.up("xl"));
+ const [activeSlide, setActiveSlide] = useState(0)
+ const isLarge = useMediaQuery(theme.breakpoints.up("lg"))
+ const isXLarge = useMediaQuery(theme.breakpoints.up("xl"))
 
  const cards = useMemo(
   () =>
@@ -23,15 +23,10 @@ const Discounts = ({ ...props }) => {
     onClick: () => setActiveSlide(idx),
    })),
   [activeSlide]
- );
+ )
 
  return (
-  <Box
-   pt={14.75}
-   pb={33}
-   sx={{ backgroundColor: theme.palette.grey["800"] }}
-   {...props}
-  >
+  <Box pt={14.75} pb={33} sx={{ backgroundColor: "#F3F4F6" }} {...props}>
    <Box
     marginX="auto"
     mb={9}
@@ -42,10 +37,10 @@ const Discounts = ({ ...props }) => {
     justifyContent="space-between"
    >
     <Box>
-     <SectionTitle color="common.white" mb={2.25}>
+     <SectionTitle color="grey.900" mb={2.25}>
       Ưu đãi
      </SectionTitle>
-     <SectionSubtitle color="grey.300" maxWidth="444px">
+     <SectionSubtitle color="grey.900" maxWidth="444px">
       Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       Velit officia consequat duis enim velit mollit.
      </SectionSubtitle>
@@ -78,7 +73,7 @@ const Discounts = ({ ...props }) => {
       selectedIndex={activeSlide}
       slides={cards}
       onSelect={(controller) => {
-       setActiveSlide(controller.selectedScrollSnap());
+       setActiveSlide(controller.selectedScrollSnap())
       }}
       onInit={(controller) => controller.reInit({ containScroll: "keepSnaps" })}
       scrollDelay={isLarge ? 250 : 50}
@@ -93,7 +88,7 @@ const Discounts = ({ ...props }) => {
     </Container>
    </Box>
   </Box>
- );
-};
+ )
+}
 
-export default Discounts;
+export default Discounts
