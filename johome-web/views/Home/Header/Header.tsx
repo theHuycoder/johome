@@ -34,7 +34,7 @@ export default function Header({ ...props }) {
  const onCursorClick = () => {
   if (cursorRef.current && videoButtonRef.current) {
    cursorRef.current.style.transition = "all 2s linear"
-   cursorRef.current.style.transform = "scale(3)"
+   cursorRef.current.style.transform = "scale(4)"
    videoButtonRef.current.style.opacity = "0"
    setVideoMode(true)
   }
@@ -42,7 +42,7 @@ export default function Header({ ...props }) {
 
  const onBackClick = () => {
   if (cursorRef.current && videoButtonRef.current) {
-   cursorRef.current.style.transition = "all 1.2s linear"
+   cursorRef.current.style.transition = "all 1s linear"
    cursorRef.current.style.transform = "translate(50%, 0%) scale(1)"
    setVideoMode(false)
   }
@@ -58,7 +58,7 @@ export default function Header({ ...props }) {
 
   const resize = () => {
    const cursorWidth = cursor.offsetWidth
-   videoButton.style.right = `${(cursorWidth + text.offsetWidth * 1.05) / 2}px`
+   videoButton.style.right = `${(cursorWidth + text.offsetWidth * 1.12) / 2}px`
   }
 
   resize()
@@ -94,8 +94,8 @@ export default function Header({ ...props }) {
       Khám phá ngay
      </p>
      <StyledVideoButton
-      color="primary.main"
-      hoverColor="primary.600"
+      color="common.white"
+      hoverColor="grey.100"
       onClick={onCursorClick}
       disabled={videoMode}
      >
@@ -109,7 +109,7 @@ export default function Header({ ...props }) {
        >
         <path
          d="M0.700195 3.38562C0.700195 1.03509 3.28068 -0.402389 5.27925 0.834822L17.5797 8.44937C19.4743 9.62221 19.4743 12.3782 17.5797 13.551L5.27925 21.1655C3.28068 22.4028 0.700195 20.9653 0.700195 18.6148V3.38562Z"
-         fill="#FFFFFF"
+         fill="#1BBB83"
         />
        </svg>
       </Box>

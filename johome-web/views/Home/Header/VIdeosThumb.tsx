@@ -17,7 +17,7 @@ export const videos = [
  },
  {
   id: 2,
-  src: "https://res.cloudinary.com/dyotzt92h/video/upload/v1672850956/production_ID_3783455_rrsebf.mp4",
+  src: "https://res.cloudinary.com/dyotzt92h/video/upload/v1672900157/pexels-hac-hai-9792717_2_aridka.mp4",
   type: "video/mp4",
  },
  {

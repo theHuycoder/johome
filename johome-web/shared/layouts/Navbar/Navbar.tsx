@@ -82,7 +82,7 @@ export default forwardRef<
       {links.map((link) => {
        return (
         <Link key={link.id} href={link.href}>
-         <Typography fontWeight={600} color={linkColor || "grey.600"}>
+         <Typography fontWeight={600} color={!isScrolled && linkColor || "grey.600"}>
           {link.label.vn}
          </Typography>
         </Link>
