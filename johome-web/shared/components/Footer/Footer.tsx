@@ -115,9 +115,9 @@ const footerLinks = [
   }
 ]
 
-export default function Footer() {
+export default function Footer(props: any) {
   return (
-    <Box>
+    <Box {...props}>
       <Container maxWidth="xl">
         <Grid container>
           <Grid item xs={4}>

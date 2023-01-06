@@ -6,6 +6,7 @@ import {StyledNavbar} from "./Navbar.styles";
 import {Logo, LogoColor} from "@/shared/components/Icons";
 import {Box, Container, Typography} from "@mui/material";
 import {Button} from "@/shared/components";
+import {useRouter} from "next/router";
 
 const links = [
   {
@@ -47,6 +48,7 @@ export default forwardRef<{ [key: string]: any; logoVariant: LogoVariant; should
   ref
 ) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter()
 
   useEffect(() => {
     if (!shouldToggle) return;
@@ -68,7 +70,7 @@ export default forwardRef<{ [key: string]: any; logoVariant: LogoVariant; should
         <Box display="flex" alignItems="center"
              width={isScrolled || spread ? "100%" : "85%"}
              justifyContent={"space-between"}>
-          <Box width="10%">
+          <Box width="10%" onClick={() => router.push("/home")} sx={{cursor: "pointer"}}>
             {logoVariant === "monochrome" && <Logo/>}
             {logoVariant === "colorful" && <LogoColor/>}
           </Box>

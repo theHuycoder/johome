@@ -105,6 +105,4 @@ export const TourWrapper = styled(Box)`
       flex-direction: column;
     }
   }
-
-
 `

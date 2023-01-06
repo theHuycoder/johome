@@ -30,6 +30,7 @@
     "embla-carousel-wheel-gestures": "^3.0.0",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
+    "google-map-react": "^2.2.0",
     "graphql": "^16.6.0",
     "gsap": "^3.11.3",
     "lodash.debounce": "^4.0.8",
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "@types/autosuggest-highlight": "^3.2.0",
+    "@types/google-map-react": "^2.1.7",
     "@types/lodash.debounce": "^4.0.7",
     "@types/lodash.get": "^4.4.7",
     "@types/styled-components": "^5.1.26"
