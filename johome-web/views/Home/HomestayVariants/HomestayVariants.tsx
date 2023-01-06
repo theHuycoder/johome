@@ -14,40 +14,32 @@ const cards = [
   },
   {
     key: "2",
-    title: "Nhà sàn",
-    imgUrl: "/assets/home/variant-1.jpg",
+    title: "Nhà tranh",
+    imgUrl: "/assets/home/variant-2.jpg",
     description: "Không gian ấm áp, gần gũi, thân thiện với môi trường",
     link: "/",
   },
   {
     key: "3",
 
-    title: "Nhà sàn",
-    imgUrl: "/assets/home/variant-1.jpg",
+    title: "Nhà gỗ",
+    imgUrl: "/assets/home/variant-3.jpg",
     description: "Không gian ấm áp, gần gũi, thân thiện với môi trường",
     link: "/",
   },
   {
     key: "4",
 
-    title: "Nhà sàn",
-    imgUrl: "/assets/home/variant-1.jpg",
+    title: "Nhà trệt",
+    imgUrl: "/assets/home/variant-4.jpg",
     description: "Không gian ấm áp, gần gũi, thân thiện với môi trường",
     link: "/",
   },
   {
     key: "5",
 
-    title: "Nhà sàn",
-    imgUrl: "/assets/home/variant-1.jpg",
-    description: "Không gian ấm áp, gần gũi, thân thiện với môi trường",
-    link: "/",
-  },
-  {
-    key: "6",
-
-    title: "Nhà sàn",
-    imgUrl: "/assets/home/variant-1.jpg",
+    title: "Nhà nhỏ",
+    imgUrl: "/assets/home/variant-5.jpg",
     description: "Không gian ấm áp, gần gũi, thân thiện với môi trường",
     link: "/",
   },

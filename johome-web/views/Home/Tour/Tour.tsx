@@ -13,31 +13,31 @@ const tours = [
     location: "Bến tre",
     name: "Tour: “Đón TẾT miền Tây”",
     description: "Trải nghiệm văn hóa đón Tết, những món ăn đặc sản cùng người dân địa phương.",
-    price: "999000",
+    price: 999000,
     currency: "VND",
     stars: 4.8
   },
   {
     id: 2,
     largeImage: "/assets/home/tour-large-2.png",
-    smallImage: "/assets/home/tour-small-1.jpg",
-    location: "Bến tre",
-    name: "Tour: “Đón TẾT miền Tây”",
-    description: "Trải nghiệm văn hóa đón Tết, những món ăn đặc sản cùng người dân địa phương.",
-    price: "999000",
+    smallImage: "/assets/home/tour-small-2.jpg",
+    location: "Hà Giang",
+    name: "Tour Ruộng bậc thang Hoàng Su Phì",
+    description: "Mùa lúa chín nơi đây sẽ mang đến hương thơm nồng nàn đậm chất mộc mạc, dân dã.",
+    price: 699000,
     currency: "VND",
-    stars: 4.8
+    stars: 4.9
   },
   {
     id: 3,
     largeImage: "/assets/home/tour-large-3.png",
-    smallImage: "/assets/home/tour-small-1.jpg",
-    location: "Bến tre",
-    name: "Tour: “Đón TẾT miền Tây”",
-    description: "Trải nghiệm văn hóa đón Tết, những món ăn đặc sản cùng người dân địa phương.",
-    price: "999000",
+    smallImage: "/assets/home/tour-small-3.jpg",
+    location: "Đà Lạt",
+    name: "Tour cắm trại và săn mây ở Đà Lạt ",
+    description: "Tận hưởng không khí se lạnh, săn mây và ngắm bình minh, xa xa là những đồi chè trải dài tít tắp.",
+    price: 1999000,
     currency: "VND",
-    stars: 4.8
+    stars: 4.9
   }
 ]
 
@@ -60,7 +60,7 @@ export default function Tour() {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <Grid container spacing={4}>
+            <Grid container spacing={3}>
               <Grid item lg={6}>
                 <Box position="relative" width="100%" height="100%">
                   {tours.map((tour) => (
@@ -77,7 +77,8 @@ export default function Tour() {
               <Grid item lg={6}>
                 <Box display="flex" flexDirection="column" gap={3.5}>
                   {tours.map((tour) => (
-                    <TourWrapper active={activeTour === tour.id} key={tour.id} onClick={() => setActiveTour(tour.id)}>
+                    <TourWrapper active={activeTour === tour.id} key={tour.id}
+                                 onMouseOver={() => setActiveTour(tour.id)}>
                       <Box className="img-wrapper">
                         <Image src={tour.smallImage} alt={tour.name} fill priority/>
                       </Box>
@@ -91,7 +92,7 @@ export default function Tour() {
                           <Box>
                             Chỉ từ {" "}
                             <Box component="span" className="price-box">
-                              <span className="price">{tour.price}{" "}</span>
+                              <span className="price">{tour.price?.toLocaleString("vi-VN")}{" "}</span>
                               <span className="currency">{tour.currency}</span>
                             </Box>
                           </Box>
