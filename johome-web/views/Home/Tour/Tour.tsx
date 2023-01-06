@@ -8,7 +8,7 @@ import {Fade} from '@mui/material'
 const tours = [
   {
     id: 1,
-    largeImage: "/assets/home/tour-large-1.jpeg",
+    largeImage: "/assets/home/tour-large-1.png",
     smallImage: "/assets/home/tour-small-1.jpg",
     location: "Bến tre",
     name: "Tour: “Đón TẾT miền Tây”",
