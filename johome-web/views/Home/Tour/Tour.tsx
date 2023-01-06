@@ -60,7 +60,7 @@ export default function Tour() {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
               <Grid item lg={6}>
                 <Box position="relative" width="100%" height="100%">
                   {tours.map((tour) => (

@@ -5,7 +5,7 @@ import {LogoColor} from "@/shared/components/Icons";
 
 const footerLinks = [
   {
-    title: "Về Johine",
+    title: "Về Johome",
     links: [
       {
         id: 1,
@@ -137,7 +137,7 @@ export default function Footer(props: any) {
             </Box>
           </Grid>
           <Grid item xs={8} mb="100px">
-            <Box display="flex" alignItems="center" gap="82px">
+            <Box display="flex" alignItems="flex-start" gap="82px">
               {footerLinks.map((item, index) => (
                 <FooterColumn key={item.title}>
                   <Box className="title">{item.title}</Box>

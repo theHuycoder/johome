@@ -61,18 +61,20 @@ export default function ExperimentDetails({
               ))}
             </TabList>
           </Box>
-          <TabPanel value={DetailTabs.GENERAL}>
-            <Typography variant="h5" fontWeight={700}>{content?.general.title}</Typography>
-            <Typography variant="body2">{content?.general.description}</Typography>
-          </TabPanel>
-          <TabPanel value={DetailTabs.IMAGES}>
-            <Typography variant="h5" fontWeight={700}>{content?.general.title}</Typography>
-            <Typography variant="body2">{content?.general.description}</Typography>
-          </TabPanel>
-          <TabPanel value={DetailTabs.LOCATIONS}>
-            <Typography variant="h5" fontWeight={700}>{content?.general.title}</Typography>
-            <Typography variant="body2">{content?.general.description}</Typography>
-          </TabPanel>
+          <Box px={1}>
+            <TabPanel value={DetailTabs.GENERAL}>
+              <Typography maxWidth="80%" mb={2} variant="h5" fontWeight={800}>{content?.general.title}</Typography>
+              <Typography variant="body2">{content?.general.description}</Typography>
+            </TabPanel>
+            <TabPanel value={DetailTabs.IMAGES}>
+              <Typography maxWidth="80%" mb={2} variant="h5" fontWeight={700}>{content?.general.title}</Typography>
+              <Typography variant="body2">{content?.general.description}</Typography>
+            </TabPanel>
+            <TabPanel value={DetailTabs.LOCATIONS}>
+              <Typography maxWidth="80%" mb={2} variant="h5" fontWeight={700}>{content?.general.title}</Typography>
+              <Typography variant="body2">{content?.general.description}</Typography>
+            </TabPanel>
+          </Box>
         </TabContext>
       </Box>
     </DetailsWrapper>

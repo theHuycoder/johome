@@ -4,7 +4,7 @@ import Image from "next/image"
 import {SectionTitle, SectionSubtitle} from "@/shared/components/Typography";
 import {TabWrapper, LeaderBoard, LeaderRow, Avatar} from "@/views/Home/OwnerLeaderboard/OwnerLeaderboard.styles";
 
-const owners = [
+const ownersWeek = [
   {
     id: 1,
     avatar: "/assets/home/owner-1.jpg",
@@ -26,6 +26,31 @@ const owners = [
     deals: 189,
     stars: 4.8
   }
+]
+
+const ownersMonth = [
+  {
+    id: 1,
+    avatar: "/assets/home/owner-2.jpg",
+    name: "Đỗ Quang Huy ",
+    deals: 202,
+    stars: 4.8
+  },
+  {
+    id: 2,
+    avatar: "/assets/home/owner-3.jpg",
+    name: "Trần Minh Hiếu",
+    deals: 189,
+    stars: 4.8
+  },
+  {
+    id: 3,
+    avatar: "/assets/home/owner-1.jpg",
+    name: "Đỗ Minh Phương",
+    deals: 233,
+    stars: 4.8
+  },
+
 ]
 
 export default function OwnerLeaderBoard() {
@@ -73,7 +98,7 @@ export default function OwnerLeaderBoard() {
                   </Box>
                   <Box>
                     <LeaderBoard>
-                      {owners.map((owner) => <LeaderRow key={owner.id}>
+                      {(activeTab === 0 ? ownersWeek : ownersMonth).map((owner) => <LeaderRow key={owner.id}>
                         <Avatar>
                           <Box className="text">
                             {owner.id}
