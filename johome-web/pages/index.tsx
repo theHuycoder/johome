@@ -149,9 +149,10 @@ export default function Home() {
 
 
   return (
-    <Box position="relative" height="100vh">
+    <Box position="relative" height="100vh" sx={{overflow: "hidden"}}>
       <Cursor id="cursor"/>
-      <Image id="bg" fill src="/assets/intro/intro-bg.jpg" priority alt="" style={{transformOrigin: "50% 50%"}}/>
+      <Image id="bg" fill src="/assets/intro/intro-bg.jpg" priority alt=""
+             style={{transformOrigin: "50% 50%", objectFit: "cover"}}/>
       <Box position="absolute" sx={{top: "0%", left: "0", right: 0, textAlign: "center"}}>
         <svg width="544" height="128" viewBox="0 0 544 128" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g filter="url(#filter0_f_1056_4478)">
@@ -195,7 +196,7 @@ export default function Home() {
 
       </Box>
       <Box position="absolute"
-           sx={{zIndex: 2, bottom: "15%", left: "50%", transform: "translate(-50%,-50%)"}}>
+           sx={{zIndex: 2, bottom: "18%", left: "50%", transform: "translate(-50%,-50%)"}}>
         <svg id="text-wrapper" width="905" height="110" viewBox="0 0 905 110" fill="none"
              xmlns="http://www.w3.org/2000/svg">
           <g id="d" className="letter" filter="url(#filter20_d_147_3465)">

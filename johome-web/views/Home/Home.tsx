@@ -10,6 +10,7 @@ import {Box} from "@mui/material"
 import Exploring from "./Exploring/Exploring"
 import HomestayVariants from "./HomestayVariants"
 import {Footer} from '@/shared/components'
+import ScrollToTop from "@/shared/components/ScrollToTop"
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <Tour/>
       <Member/>
       <Footer/>
+      <ScrollToTop/>
     </Box>
   )
 }
