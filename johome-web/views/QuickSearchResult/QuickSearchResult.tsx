@@ -126,8 +126,8 @@ const tours = [
     address: "Khánh Hoà, Nha Trang",
     filter: "Giáp biển",
     location: "Nha Trang",
-    name: "Annie House",
-    description: "Annie House Lodge, Spa & Restaurant là một khu du lịch nghỉ dưỡng được biết đến nhiều trong khoảng thời gian để cùng nhau “đi trốn”",
+    name: "Rustic Bungalow, Nha Trang",
+    description: "Rustic Bungalow, Nha Trang Lodge, Spa & Restaurant là một khu du lịch nghỉ dưỡng được biết đến nhiều trong khoảng thời gian để cùng nhau “đi trốn”",
     price: 899000,
     currency: "VND",
     stars: 4.2,
@@ -298,6 +298,7 @@ export default function QuickSearchResult() {
                                        setActiveLocation(tour.id)
                                        setFocusPosition(tour.position)
                                        setZoom(17)
+                                       router.push("/deals")
                                      }}
                         >
                           <Box className="img-wrapper">
@@ -386,6 +387,8 @@ export default function QuickSearchResult() {
                         setActiveLocation(tour.id)
                         setFocusPosition(tour.position)
                         setZoom(17)
+                        router.push("/deals")
+
                       }}
                     >
                       <Box className="img-wrapper">
